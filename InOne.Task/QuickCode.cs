@@ -12,5 +12,11 @@ namespace InOne.Task
         {
             Console.WriteLine($"\n{str}\nTime = {DateTime.Now - time}");
         }
+        //public static int MathSqrtInt(int number, int count = 0)
+        //{
+        //    if (number == 0)
+        //        return count;
+        //    return MathSqrtInt(number / 2, ++count);
+        //}
     }
 }
