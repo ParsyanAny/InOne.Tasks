@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.28917.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task", "InOne.Task\InOne.Task.csproj", "{BB5EB5C1-6E57-4E43-A338-CAB2C03EFCBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.Structure", "InOne.Task.Structure\InOne.Task.Structure.csproj", "{3BFCB6D4-BB58-4C1F-99D0-8B526D5FB858}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InOne.Task.Structure", "InOne.Task.Structure\InOne.Task.Structure.csproj", "{3BFCB6D4-BB58-4C1F-99D0-8B526D5FB858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.Triangle", "InOne.Task.Triangle\InOne.Task.Triangle.csproj", "{58260046-FD94-45A0-BFBF-AC6D27EE0CCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InOne.Task.Algorithms", "InOne.Task.Algorithms\InOne.Task.Algorithms.csproj", "{0ED5A0D1-B3C7-44A7-8D72-B8FD51661E70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.Algorithms", "InOne.Task.Algorithms\InOne.Task.Algorithms.csproj", "{0ED5A0D1-B3C7-44A7-8D72-B8FD51661E70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.Shapes", "InOne.Task.Shapes\InOne.Task.Shapes.csproj", "{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{3BFCB6D4-BB58-4C1F-99D0-8B526D5FB858}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BFCB6D4-BB58-4C1F-99D0-8B526D5FB858}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BFCB6D4-BB58-4C1F-99D0-8B526D5FB858}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58260046-FD94-45A0-BFBF-AC6D27EE0CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58260046-FD94-45A0-BFBF-AC6D27EE0CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58260046-FD94-45A0-BFBF-AC6D27EE0CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58260046-FD94-45A0-BFBF-AC6D27EE0CCD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0ED5A0D1-B3C7-44A7-8D72-B8FD51661E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0ED5A0D1-B3C7-44A7-8D72-B8FD51661E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED5A0D1-B3C7-44A7-8D72-B8FD51661E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED5A0D1-B3C7-44A7-8D72-B8FD51661E70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

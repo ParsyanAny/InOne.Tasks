@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InOne.Task
 {
@@ -11,6 +7,11 @@ namespace InOne.Task
         public static void Time(string str, DateTime time)
         {
             Console.WriteLine($"\n{str}\nTime = {DateTime.Now - time}");
+        }
+        public static void Write(char ch, int k)
+        {
+            Console.Write(new string (ch,k));
+            Console.WriteLine();
         }
         //public static int MathSqrtInt(int number, int count = 0)
         //{

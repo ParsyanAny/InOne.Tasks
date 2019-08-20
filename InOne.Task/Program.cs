@@ -1,5 +1,6 @@
 ﻿using InOne.Task.Structure.IMPL;
 using InOne.Task.Algorithms;
+using InOne.Task.Shapes;
 using System;
 using System.Collections.Generic;
 
@@ -69,7 +70,6 @@ namespace InOne.Task
             //    Console.WriteLine(item);
             //}
             #endregion
-
             #region Algorithms
             //int a = Iterative.Fibonachi(10);
 
@@ -81,15 +81,18 @@ namespace InOne.Task
             //int fast = Recursive.FibonachiFast(10);
             //QuickCode.Time("Fasst Fibonachi", time2);
 
-            List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+            //List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
             //int index1 = Iterative.BinarySearch(list, 11);
-            int index2 = Recursive.BinarySearch(list, 11,list.Count-1, 0);
-            Console.WriteLine(index2);
+            //int index2 = Recursive.BinarySearch(list, 11,list.Count-1, 0);
+            //Console.WriteLine(index2);
 
             //int a = Recursive.BinaryNumber(50);
             //int a = 49;
             //Console.WriteLine(Math.Sqrt(a));
             //Console.WriteLine(qm);
+            #endregion
+            #region Triangle
+            Triangle.DrawTriangleRec(9);
             #endregion
             Console.ReadLine();
         }
