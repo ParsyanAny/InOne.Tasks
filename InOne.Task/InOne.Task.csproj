@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InOne.Task.Algorithms\InOne.Task.Algorithms.csproj">
+      <Project>{0ed5a0d1-b3c7-44a7-8d72-b8fd51661e70}</Project>
+      <Name>InOne.Task.Algorithms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InOne.Task.Structure\InOne.Task.Structure.csproj">
       <Project>{3bfcb6d4-bb58-4c1f-99d0-8b526d5fb858}</Project>
       <Name>InOne.Task.Structure</Name>

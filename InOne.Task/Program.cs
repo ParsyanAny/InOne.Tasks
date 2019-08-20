@@ -1,5 +1,7 @@
 ﻿using InOne.Task.Structure.IMPL;
+using InOne.Task.Algorithms;
 using System;
+using System.Collections.Generic;
 
 namespace InOne.Task
 {
@@ -67,7 +69,27 @@ namespace InOne.Task
             //    Console.WriteLine(item);
             //}
             #endregion
+
+            #region Algorithms
+            //int a = Iterative.Fibonachi(10);
+
+            //var time1 = DateTime.Now;
+            //int slow = Recursive.FibonachiSlow(10);
+            //Time("Slow Fibonachi", time1);
+
+            //var time2 = DateTime.Now;
+            //int fast = Recursive.FibonachiFast(10);
+            //Time("Fasst Fibonachi", time2);
+
+            //List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+            //int index = Iterative.BinarySearch(list,201);
+            //Console.WriteLine(a);
+            #endregion
             Console.ReadLine();
+        }
+        public static void Time(string str, DateTime time)
+        {
+            Console.WriteLine($"\n{str}\nTime = {DateTime.Now - time}");
         }
     }
 }
