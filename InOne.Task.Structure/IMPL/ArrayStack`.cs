@@ -2,7 +2,7 @@
 
 namespace InOne.Task.Structure.IMPL
 {
-    class ArrayStack<T> : IStack<T>
+   public class ArrayStack<T> : IStack<T>
     {
         private T[] _arr;
         private int _top;

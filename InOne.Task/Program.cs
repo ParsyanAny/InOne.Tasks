@@ -61,7 +61,10 @@ namespace InOne.Task
             #region BigInteger
             //MyLinkedList<int> list = new MyLinkedList<int>();
             //var bigI = new BigInteger();
-            //list = bigI.Multiplication(3, 18);
+            //BigInteger bigI1 = new BigInteger(200);
+            //BigInteger muli = new BigInteger(3);
+            //BigInteger sum = bigI1.Sum(22);
+            //BigInteger mul = bigI1.Multiplication(muli);
             //list = bigI.Sum(25,8);
             ////list = bigI.Subtraction(5000,4999);
 
@@ -90,9 +93,20 @@ namespace InOne.Task
             //int a = 49;
             //Console.WriteLine(Math.Sqrt(a));
             //Console.WriteLine(qm);
+
+            //int[] arr = new int[]{ 1, 2, 3, 4, 5, 10, 25,6, 3, 2, 1, 0, - 1, - 2, - 3, - 4, - 5, - 6 };
+            //int index = Iterative.MaxPointIndex(arr);
+            //Console.WriteLine(index);
             #endregion
             #region Triangle
-            Triangle.DrawTriangleRec(9);
+            //Triangle.DrawTriangleRec(60);
+            #endregion
+            #region Binary tree
+            //BinaryTree<int> bt = new BinaryTree<int>(1);
+            //bt.Add(2);
+            //bt.Add(20);
+            //bt.Add(10);
+            //bt.Add(-5);
             #endregion
             Console.ReadLine();
         }

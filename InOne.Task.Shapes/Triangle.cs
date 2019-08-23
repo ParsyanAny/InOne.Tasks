@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace InOne.Task.Shapes
 {
@@ -37,16 +35,20 @@ namespace InOne.Task.Shapes
             Console.WriteLine();
             FullTriangle(n - 1, k);
         }
-        public static void EmptyTriangleRec(int n, int k = 0)
+        public static void EmptyTriangleRec(int n, int skip = 1)
         {
-            if (n <= 0)
+            if (n == 2)
                 return;
-            if( k == n)
-                Console.Write('*');
-            Console.Write(' ');
-            EmptyTriangleRec(n, k + 1);
-            EmptyTriangleRec(n - 1, k = n);
+
+            QuickCode.Write(' ', n);
+            Console.Write("*");
+            QuickCode.Write(' ',skip);
+            Console.Write("*");
+            Console.WriteLine();
+
+            EmptyTriangleRec(n-1, skip + 2);
         }
+
         public static void EmptyTriangle(int n, int k)
         {
             if (n <= 2)
@@ -79,7 +81,8 @@ namespace InOne.Task.Shapes
         }
         public static void DrawTriangleRec(int n)
         {
-            Console.WriteLine(new string(' ', n + 1) + '*');
+            QuickCode.Write(' ',n+1);
+            Console.WriteLine("*");
             EmptyTriangleRec(n);
             Console.Write(" ");
             while (n >= 0)

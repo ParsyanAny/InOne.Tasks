@@ -2,7 +2,7 @@
 
 namespace InOne.Task.Structure.IMPL
 {
-    class ArrayQueue<T> : IQueue<T>
+    public class ArrayQueue<T> : IQueue<T>
     {
         private T[] _arr;
         private int enq = -1;

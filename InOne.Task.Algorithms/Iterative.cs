@@ -41,5 +41,28 @@ namespace InOne.Task.Algorithms
             }
             throw new Exception("Number not found");
         }
+        public static bool Polindrome(int number)  // Task
+        {
+
+            return true;
+        }
+        public static int MaxPointIndex(int[] arr)
+        {
+            if (arr.Length < 3)
+                throw new Exception("Array is too small");
+            int min = 0;  // 1 2 3 4 5 10 25 6 3 2 1 0 - 1 - 2 - 3 - 4 - 5 - 6
+            int max = arr.Length-1;
+            while(min <= max)
+            {
+                int mid = (max + min) / 2;
+                if (arr[mid - 1] < arr[mid] && arr[mid + 1] < arr[mid])
+                    return mid;
+                else if (arr[mid] > arr[mid+1])
+                    max = mid - 1;
+                else if (arr[mid] < arr[mid+1])
+                    min = mid + 1;
+            }
+            return int.MinValue;
+        }
     }
 }

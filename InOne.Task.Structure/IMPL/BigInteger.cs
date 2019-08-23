@@ -2,72 +2,57 @@
 
 namespace InOne.Task.Structure.IMPL
 {
-    public class BigInteger : MyLinkedList<int>//, ICalculate
-    {
-        private MyLinkedList<int> _list1;
-        private MyLinkedList<int> _list2;
-        public MyLinkedList<int> CreateBigInteger(MyLinkedList<int> list, int number)
+        public class BigInteger  // : ICalculate, IEnumerable
         {
-            list = new MyLinkedList<int>();
-            while (number > 0)
+            private MyLinkedList<int> list;
+            public BigInteger(int num)
             {
-                list.Add(number % 10);
-                number /= 10;
-            }
-            return list;
-        }
-        public MyLinkedList<int> Sum(int first, int second)
-        {
-            _list1 = CreateBigInteger(_list1, first);
-            _list2 = CreateBigInteger(_list2, second);
-            MyLinkedList<int> sumList = new MyLinkedList<int>();
-            int tr = 0;
-            int count1 = _list1._Count;
-            int count2 = _list2._Count;
-            while (!_list1.IsEmpty() && !_list2.IsEmpty())
-            {
-                int sum = _list1.First() + _list2.First();
-                if (sum < 10)
+                list = new MyLinkedList<int>();
+                while (num > 0)
                 {
-                    sumList.AddFirst(sum + tr);
-                    tr = 0;
+                    list.Add(num % 10);
+                    num /= 10;
                 }
-                else
-                {
-                    sumList.AddFirst(sum % 10 + tr);
-                    tr = sum / 10 + tr;
-                    if (sum - 10 == 0)
-                        tr = 1;
-                }
-                _list1.RemoveFirst();
-                _list2.RemoveFirst();
             }
-            if (count1 != count2)
+            private BigInteger() { }
+
+            public BigInteger Sum(int num)
             {
-                if (count1 > count2)
+                return new BigInteger(num).Sum(this);
+                //return this.Sum(new BigInteger(num));
+            }
+            public BigInteger Sum(BigInteger num)
+            {
+                var list2 = num.list;
+                MyLinkedList<int> sumList = new MyLinkedList<int>();
+                int tr = 0;
+                int count1 = this.list._Count;
+                int count2 = num.list._Count;
+                while (!list.IsEmpty() && !num.list.IsEmpty())
                 {
-                    while (!_list1.IsEmpty())
+                    int sum = list.First() + num.list.First();
+                    if (sum < 10)
                     {
-                        int firstEl = _list1.First();
-                        if (tr == 0)
-                            sumList.AddFirst(firstEl);
-                        else
-                            if (firstEl + tr < 10)
-                        {
-                            sumList.AddFirst(firstEl + tr);
-                            tr = 0;
-                        }
-                        else
-                            sumList.AddFirst((firstEl + tr) % 10);
-                        _list1.RemoveFirst();
+                        sumList.AddFirst(sum + tr);
+                        tr = 0;
                     }
-                }
-                else
-                    while (!_list2.IsEmpty())
+                    else
                     {
-                        while (!_list2.IsEmpty())
+                        sumList.AddFirst(sum % 10 + tr);
+                        tr = sum / 10 + tr;
+                        if (sum - 10 == 0)
+                            tr = 1;
+                    }
+                    list.RemoveFirst();
+                    num.list.RemoveFirst();
+                }
+                if (count1 != count2)
+                {
+                    if (count1 > count2)
+                    {
+                        while (!list.IsEmpty())
                         {
-                            int firstEl = _list2.First();
+                            int firstEl = list.First();
                             if (tr == 0)
                                 sumList.AddFirst(firstEl);
                             else
@@ -78,150 +63,100 @@ namespace InOne.Task.Structure.IMPL
                             }
                             else
                                 sumList.AddFirst((firstEl + tr) % 10);
-                            _list2.RemoveFirst();
+                            list.RemoveFirst();
                         }
                     }
-            }
-            if (tr > 0)
-                sumList.AddFirst(1);
-            if (sumList.First() == 0)
-                sumList.RemoveFirst();
-            return sumList;
-        }
-        public MyLinkedList<int> Sum(MyLinkedList<int> first, MyLinkedList<int> second)
-        {
-            MyLinkedList<int> sumList = new MyLinkedList<int>();
-            int tr = 0;
-            int count1 = _list1._Count;
-            int count2 = _list2._Count;
-            while (!_list1.IsEmpty() && !_list2.IsEmpty())
-            {
-                int sum = _list1.First() + _list2.First();
-                if (sum < 10)
-                {
-                    sumList.AddFirst(sum + tr);
-                    tr = 0;
-                }
-                else
-                {
-                    sumList.AddFirst(sum % 10 + tr);
-                    tr = sum / 10 + tr;
-                    if (sum - 10 == 0)
-                        tr = 1;
-                }
-                _list1.RemoveFirst();
-                _list2.RemoveFirst();
-            }
-            if (count1 != count2)
-            {
-                if (count1 > count2)
-                {
-                    while (!_list1.IsEmpty())
-                    {
-                        int firstEl = _list1.First();
-                        if (tr == 0)
-                            sumList.AddFirst(firstEl);
-                        else
-                            if (firstEl + tr < 10)
+                    else
+                        while (!num.list.IsEmpty())
                         {
-                            sumList.AddFirst(firstEl + tr);
-                            tr = 0;
-                        }
-                        else
-                            sumList.AddFirst((firstEl + tr) % 10);
-                        _list1.RemoveFirst();
-                    }
-                }
-                else
-                    while (!_list2.IsEmpty())
-                    {
-                        while (!_list2.IsEmpty())
-                        {
-                            int firstEl = _list2.First();
-                            if (tr == 0)
-                                sumList.AddFirst(firstEl);
-                            else
-                                if (firstEl + tr < 10)
+                            while (!num.list.IsEmpty())
                             {
-                                sumList.AddFirst(firstEl + tr);
-                                tr = 0;
+                                int firstEl = num.list.First();
+                                if (tr == 0)
+                                    sumList.AddFirst(firstEl);
+                                else
+                                    if (firstEl + tr < 10)
+                                {
+                                    sumList.AddFirst(firstEl + tr);
+                                    tr = 0;
+                                }
+                                else
+                                    sumList.AddFirst((firstEl + tr) % 10);
+                                num.list.RemoveFirst();
                             }
-                            else
-                                sumList.AddFirst((firstEl + tr) % 10);
-                            _list2.RemoveFirst();
                         }
-                    }
-            }
-            if (tr > 0)
-                sumList.AddFirst(1);
-            if (sumList.First() == 0)
-                sumList.RemoveFirst();
-            return sumList;
-        }
-        public MyLinkedList<int> Subtraction(int first, int second)
-        {
-            _list1 = CreateBigInteger(_list1, first);
-            _list2 = CreateBigInteger(_list2, second);
-            MyLinkedList<int> subList = new MyLinkedList<int>();
-            int tr = 0;
-            int count1 = _list1._Count;
-            int count2 = _list2._Count;
-            while (!_list1.IsEmpty() && !_list2.IsEmpty())
-            {
-                int firstEl = _list1.First();
-                int secondEl = _list2.First();
-                int min = firstEl - secondEl;
-                if (min < 0)
-                {
-                    subList.AddFirst((firstEl + 10) - secondEl + tr);
-                    tr = -1;
                 }
-                else
-                {
-                    subList.AddFirst(Math.Abs(min + tr));
-                    tr = 0;
-                }
-                _list1.RemoveFirst();
-                _list2.RemoveFirst();
+                if (tr > 0)
+                    sumList.AddFirst(1);
+                if (sumList.First() == 0)
+                    sumList.RemoveFirst();
+                return new BigInteger() { list = sumList };
+                //   return sumList;
             }
-            if (count1 != count2)
+            public BigInteger Subtraction(BigInteger num)
             {
-                while (!_list1.IsEmpty())
+                var list2 = num.list;
+                MyLinkedList<int> subList = new MyLinkedList<int>();
+                int tr = 0;
+                int count1 = this.list._Count;
+                int count2 = num.list._Count;
+
+                while (!list.IsEmpty() && !num.list.IsEmpty())
                 {
-                    if (_list1.First() == 0 && tr != 0)
+                    int firstEl = list.First();
+                    int secondEl = num.list.First();
+                    int min = firstEl - secondEl;
+                    if (min < 0)
                     {
-                        subList.AddFirst(_list1.First() + 10 + tr);
+                        subList.AddFirst((firstEl + 10) - secondEl + tr);
                         tr = -1;
                     }
                     else
                     {
-                        subList.AddFirst(Math.Abs(_list1.First() + tr));
+                        subList.AddFirst(Math.Abs(min + tr));
                         tr = 0;
                     }
-                    _list1.RemoveFirst();
+                    list.RemoveFirst();
+                    num.list.RemoveFirst();
                 }
+                if (count1 != count2)
+                {
+                    while (!list.IsEmpty())
+                    {
+                        if (list.First() == 0 && tr != 0)
+                        {
+                            subList.AddFirst(list.First() + 10 + tr);
+                            tr = -1;
+                        }
+                        else
+                        {
+                            subList.AddFirst(Math.Abs(list.First() + tr));
+                            tr = 0;
+                        }
+                        list.RemoveFirst();
+                    }
+                }
+                while (subList.First() == 0)
+                {
+                    subList.RemoveFirst();
+                }
+                return new BigInteger() { list = subList };
             }
-            while (subList.First() == 0)
-            {
-                subList.RemoveFirst();
-            }
-            return subList;
-        }
-        //public MyLinkedList<int> Multiplication(int first, int second)
-        //{
-        //    _list1 = CreateBigInteger(_list1, first);
-        //    _list2 = CreateBigInteger(_list2, second);
+
+
+        //    public BigInteger Multiplication(BigInteger number)
+        //    {
+        //    var list2 = number.list;
         //    MyLinkedList<int> mulList = new MyLinkedList<int>();
         //    int tr = 0;
-        //    int count1 = _list1._Count;
-        //    int count2 = _list2._Count;
-        //    while (!_list1.IsEmpty())
+        //    int count1 = list._Count;
+        //    int count2 = number.list._Count;
+        //    while (!list.IsEmpty())
         //    {
         //        MyLinkedList<int> trList = new MyLinkedList<int>();
-        //        while (!_list2.IsEmpty())
+        //        while (!list.IsEmpty())
         //        {
-
-        //            int mul = _list1.First() * _list2.First();
+        //            int mul = list.First() * number.list.First();
         //            if (mul < 10)
         //            {
         //                trList.AddFirst(mul + tr);
@@ -239,7 +174,7 @@ namespace InOne.Task.Structure.IMPL
         //                if (mul - 10 == 0)
         //                    tr = 1;
         //            }
-        //            _list2.RemoveFirst();
+        //            number.list.RemoveFirst();
         //        }
         //        if (tr != 0)
         //        {
@@ -256,172 +191,234 @@ namespace InOne.Task.Structure.IMPL
         //        else
         //        {
         //            mulList.AddFirst(0);
-        //            mulList = Sum(trList, mulList);
+        //            mulList = Sum(trList);
         //        }
-        //        _list1.RemoveFirst();
+        //        list.RemoveFirst();
         //    }
-        //    return mulList;
+        //    return new BigInteger() { list = mulList };
         //}
-        //public MyLinkedList<int> Multiplication(int first, int second)
+        //public mylinkedlist<int> multiplication(int first, int second)
         //{
-        //    _list1 = CreateBigInteger(_list1, first);
-        //    _list2 = CreateBigInteger(_list2, second);
-        //    MyLinkedList<int> mulList = new MyLinkedList<int>();
+        //    _list1 = createbiginteger(_list1, first);
+        //    _list2 = createbiginteger(_list2, second);
+        //    mylinkedlist<int> mullist = new mylinkedlist<int>();
         //    int tr = 0;
-        //    int count1 = _list1._Count;
-        //    int count2 = _list2._Count;
-        //    if (_list1._Count < _list2._Count)
+        //    int count1 = _list1._count;
+        //    int count2 = _list2._count;
+        //    while (!_list1.isempty())
         //    {
-        //        while (!_list1.IsEmpty())
+        //        mylinkedlist<int> trlist = new mylinkedlist<int>();
+        //        while (!_list2.isempty())
         //        {
-        //            MyLinkedList<int> trList = new MyLinkedList<int>();
-        //            while (!_list2.IsEmpty())
+
+        //            int mul = _list1.first() * _list2.first();
+        //            if (mul < 10)
         //            {
-        //                int mul = _list1.First() * _list2.First();
-        //                if (mul < 10)
-        //                {
-        //                    trList.AddFirst(mul + tr);
-        //                    tr = 0;
-        //                }
-        //                else
-        //                {
-        //                    if (tr == 0)
-        //                        tr = mul / 10;
-        //                    else
-        //                    {
-        //                        tr = mul / 10 + tr;
-        //                    }
-        //                    trList.AddFirst(mul % 10);
-        //                    if (mul - 10 == 0)
-        //                        tr = 1;
-        //                }
-        //                _list2.RemoveFirst();
+        //                trlist.addfirst(mul + tr);
+        //                tr = 0;
         //            }
-        //            if (tr != 0)
-        //            {
-        //                if (tr < 10)
-        //                    trList.AddFirst(tr);
-        //                else
-        //                {
-        //                    trList.AddFirst(tr % 10);
-        //                    trList.AddFirst(tr / 10);
-        //                }
-        //            }
-        //            if (mulList.IsEmpty())
-        //                mulList = trList;
         //            else
         //            {
-        //                mulList.AddFirst(0);
-        //                mulList = Sum(trList, mulList);
+        //                if (tr == 0)
+        //                    tr = mul - (mul % 10);
+        //                else
+        //                {
+        //                    tr = mul - (mul % 10) + tr;
+        //                }
+        //                trlist.addfirst(mul % 10);
+        //                if (mul - 10 == 0)
+        //                    tr = 1;
         //            }
-        //            _list1.RemoveFirst();
+        //            _list2.removefirst();
         //        }
-        //    }
-        //    else
-        //    {
-        //        while (!_list2.IsEmpty())
+        //        if (tr != 0)
         //        {
-        //            MyLinkedList<int> trList = new MyLinkedList<int>();
-        //            while (!_list1.IsEmpty())
-        //            {
-        //                int mul = _list2.First() * _list1.First();
-        //                if (mul < 10)
-        //                {
-        //                    trList.AddFirst(mul + tr);
-        //                    tr = 0;
-        //                }
-        //                else
-        //                {
-        //                    if (tr == 0)
-        //                        tr = mul / 10;
-        //                    else
-        //                    {
-        //                        tr = mul / 10 + tr;
-        //                    }
-        //                    trList.AddFirst(mul % 10);
-        //                    if (mul - 10 == 0)
-        //                        tr = 1;
-        //                }
-        //                _list1.RemoveFirst();
-        //            }
-        //            if (tr != 0)
-        //            {
-        //                if (tr < 10)
-        //                    trList.AddFirst(tr);
-        //                else
-        //                {
-        //                    trList.AddFirst(tr % 10);
-        //                    trList.AddFirst(tr / 10);
-        //                }
-        //            }
-        //            if (mulList.IsEmpty())
-        //                mulList = trList;
+        //            if (tr < 10)
+        //                trlist.addfirst(tr);
         //            else
         //            {
-        //                mulList.AddFirst(0);
-        //                mulList = Sum(trList, mulList);
+        //                trlist.addfirst(tr % 10);
+        //                trlist.addfirst(tr / 10);
         //            }
-        //            _list2.RemoveFirst();
         //        }
+        //        if (!mullist.isempty())
+        //            mullist = trlist;
+        //        else
+        //        {
+        //            mullist.addfirst(0);
+        //            mullist = sum(trlist, mullist);
+        //        }
+        //        _list1.removefirst();
         //    }
-        //    return mulList;
+        //    return mullist;
         //}
-        public MyLinkedList<int> Division(int first, int second)
-        {
-            throw new NotImplementedException();
-        }
-
-        public MyLinkedList<int> Multiplication(int first, int second)
-        {
-            _list1 = CreateBigInteger(_list1, first);
-            _list2 = CreateBigInteger(_list2, second);
-            MyLinkedList<int> mulList = new MyLinkedList<int>();
-            int tr = 0;
-            int count1 = _list1._Count;
-            int count2 = _list2._Count;
-            MyLinkedList<int> trList = new MyLinkedList<int>();
-
-            while (!_list2.IsEmpty())
+        public BigInteger Division(BigInteger number)
             {
+                throw new NotImplementedException();
+            }
 
-                int mul = _list1.First() * _list2.First();
-                if (mul < 10)
-                {
-                    trList.AddFirst(mul + tr);
-                    tr = 0;
-                }
-                else
-                {
-                    if (tr == 0)
-                        tr = mul - (mul % 10);
-                    else
-                    {
-                        tr = mul - (mul % 10) + tr;
-                    }
-                    trList.AddFirst(mul % 10);
-                    if (mul - 10 == 0)
-                        tr = 1;
-                }
-                _list2.RemoveFirst();
-            }
-            if (tr != 0)
-            {
-                if (tr < 10)
-                    trList.AddFirst(tr);
-                else
-                {
-                    //trList.AddFirst(tr % 10);
-                    trList.AddFirst(tr / 10);
-                }
-            }
-            if (mulList.IsEmpty())
-                mulList = trList;
-            else
-            {
-                trList.AddLast(0);
-                mulList = Sum(mulList, trList);
-            }
-            return mulList;
+           
+            //    //public MyLinkedList<int> Multiplication(int first, int second)
+            //    //{
+            //    //    _list1 = CreateBigInteger(_list1, first);
+            //    //    _list2 = CreateBigInteger(_list2, second);
+            //    //    MyLinkedList<int> mulList = new MyLinkedList<int>();
+            //    //    int tr = 0;
+            //    //    int count1 = _list1._Count;
+            //    //    int count2 = _list2._Count;
+            //    //    if (_list1._Count < _list2._Count)
+            //    //    {
+            //    //        while (!_list1.IsEmpty())
+            //    //        {
+            //    //            MyLinkedList<int> trList = new MyLinkedList<int>();
+            //    //            while (!_list2.IsEmpty())
+            //    //            {
+            //    //                int mul = _list1.First() * _list2.First();
+            //    //                if (mul < 10)
+            //    //                {
+            //    //                    trList.AddFirst(mul + tr);
+            //    //                    tr = 0;
+            //    //                }
+            //    //                else
+            //    //                {
+            //    //                    if (tr == 0)
+            //    //                        tr = mul / 10;
+            //    //                    else
+            //    //                    {
+            //    //                        tr = mul / 10 + tr;
+            //    //                    }
+            //    //                    trList.AddFirst(mul % 10);
+            //    //                    if (mul - 10 == 0)
+            //    //                        tr = 1;
+            //    //                }
+            //    //                _list2.RemoveFirst();
+            //    //            }
+            //    //            if (tr != 0)
+            //    //            {
+            //    //                if (tr < 10)
+            //    //                    trList.AddFirst(tr);
+            //    //                else
+            //    //                {
+            //    //                    trList.AddFirst(tr % 10);
+            //    //                    trList.AddFirst(tr / 10);
+            //    //                }
+            //    //            }
+            //    //            if (mulList.IsEmpty())
+            //    //                mulList = trList;
+            //    //            else
+            //    //            {
+            //    //                mulList.AddFirst(0);
+            //    //                mulList = Sum(trList, mulList);
+            //    //            }
+            //    //            _list1.RemoveFirst();
+            //    //        }
+            //    //    }
+            //    //    else
+            //    //    {
+            //    //        while (!_list2.IsEmpty())
+            //    //        {
+            //    //            MyLinkedList<int> trList = new MyLinkedList<int>();
+            //    //            while (!_list1.IsEmpty())
+            //    //            {
+            //    //                int mul = _list2.First() * _list1.First();
+            //    //                if (mul < 10)
+            //    //                {
+            //    //                    trList.AddFirst(mul + tr);
+            //    //                    tr = 0;
+            //    //                }
+            //    //                else
+            //    //                {
+            //    //                    if (tr == 0)
+            //    //                        tr = mul / 10;
+            //    //                    else
+            //    //                    {
+            //    //                        tr = mul / 10 + tr;
+            //    //                    }
+            //    //                    trList.AddFirst(mul % 10);
+            //    //                    if (mul - 10 == 0)
+            //    //                        tr = 1;
+            //    //                }
+            //    //                _list1.RemoveFirst();
+            //    //            }
+            //    //            if (tr != 0)
+            //    //            {
+            //    //                if (tr < 10)
+            //    //                    trList.AddFirst(tr);
+            //    //                else
+            //    //                {
+            //    //                    trList.AddFirst(tr % 10);
+            //    //                    trList.AddFirst(tr / 10);
+            //    //                }
+            //    //            }
+            //    //            if (mulList.IsEmpty())
+            //    //                mulList = trList;
+            //    //            else
+            //    //            {
+            //    //                mulList.AddFirst(0);
+            //    //                mulList = Sum(trList, mulList);
+            //    //            }
+            //    //            _list2.RemoveFirst();
+            //    //        }
+            //    //    }
+            //    //    return mulList;
+            //    //}
+            //    public MyLinkedList<int> Division(int first, int second)
+            //    {
+            //        throw new NotImplementedException();
+            //    }
+
+            //    public MyLinkedList<int> Multiplication(int first, int second)
+            //    {
+            //        _list1 = CreateBigInteger(_list1, first);
+            //        _list2 = CreateBigInteger(_list2, second);
+            //        MyLinkedList<int> mulList = new MyLinkedList<int>();
+            //        int tr = 0;
+            //        int count1 = _list1._Count;
+            //        int count2 = _list2._Count;
+            //        MyLinkedList<int> trList = new MyLinkedList<int>();
+
+            //        while (!_list2.IsEmpty())
+            //        {
+
+            //            int mul = _list1.First() * _list2.First();
+            //            if (mul < 10)
+            //            {
+            //                trList.AddFirst(mul + tr);
+            //                tr = 0;
+            //            }
+            //            else
+            //            {
+            //                if (tr == 0)
+            //                    tr = mul - (mul % 10);
+            //                else
+            //                {
+            //                    tr = mul - (mul % 10) + tr;
+            //                }
+            //                trList.AddFirst(mul % 10);
+            //                if (mul - 10 == 0)
+            //                    tr = 1;
+            //            }
+            //            _list2.RemoveFirst();
+            //        }
+            //        if (tr != 0)
+            //        {
+            //            if (tr < 10)
+            //                trList.AddFirst(tr);
+            //            else
+            //            {
+            //                //trList.AddFirst(tr % 10);
+            //                trList.AddFirst(tr / 10);
+            //            }
+            //        }
+            //        if (mulList.IsEmpty())
+            //            mulList = trList;
+            //        else
+            //        {
+            //            trList.AddLast(0);
+            //            mulList = Sum(mulList, trList);
+            //        }
+            //        return mulList;
+            //    }
+            //}
         }
     }
-}
