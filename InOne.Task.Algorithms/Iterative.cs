@@ -43,6 +43,11 @@ namespace InOne.Task.Algorithms
         }
         public static bool Polindrome(int number)  // Task
         {
+            int log = (int)Math.Log(number);
+            //while ()
+            //{
+
+            //}
 
             return true;
         }

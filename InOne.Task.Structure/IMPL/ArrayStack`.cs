@@ -17,6 +17,7 @@ namespace InOne.Task.Structure.IMPL
         public bool IsEmpty() => _arr.Length == 0;
         public T Peek() => _arr[0];
         public T Pop() => _arr[_top--];
+        
         public void Push(T data)
         {
             if (_top != (_size - 1))

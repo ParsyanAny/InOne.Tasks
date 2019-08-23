@@ -59,7 +59,6 @@ namespace InOne.Task
             //Console.WriteLine(q.Dequeue());
             #endregion
             #region BigInteger
-            //MyLinkedList<int> list = new MyLinkedList<int>();
             //var bigI = new BigInteger();
             //BigInteger bigI1 = new BigInteger(200);
             //BigInteger muli = new BigInteger(3);
@@ -93,6 +92,14 @@ namespace InOne.Task
             //int a = 49;
             //Console.WriteLine(Math.Sqrt(a));
             //Console.WriteLine(qm);
+            ArrayStack<int> tower1 = new ArrayStack<int>(3);
+            ArrayStack<int> tower2 = new ArrayStack<int>(3);
+            tower1.Push(3);
+            tower1.Push(2);
+            tower1.Push(1);
+            ArrayStack<int> tower3 = new ArrayStack<int>(3);
+            Recursive.TowerOfHanoi(tower1,tower2,tower3, tower1.Count());
+
 
             //int[] arr = new int[]{ 1, 2, 3, 4, 5, 10, 25,6, 3, 2, 1, 0, - 1, - 2, - 3, - 4, - 5, - 6 };
             //int index = Iterative.MaxPointIndex(arr);

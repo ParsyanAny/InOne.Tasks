@@ -47,26 +47,19 @@ namespace InOne.Task.Algorithms
                 return BinarySearch(list, number, maxIndex, minIndex = mid + 1);
             }
         }
-        public static ArrayStack<int> TowerOfHanoi( ArrayStack<int> tower1, ArrayStack<int> tower2, ArrayStack<int> tower3, int n)
+        public static void TowerOfHanoi( ArrayStack<int> tower1, ArrayStack<int> tower2, ArrayStack<int> tower3, int count)
         {
-            if (n == 0)
-                return tower3;
-            if (tower3.Count() == 0)
-            {    // 321 000 000 
-                tower3.Push(tower1.Peek());
-                tower1.Pop();
-                tower2.Push(tower1.Peek());
-                tower1.Pop(); //  3 2 1
+            if (count == 0)
+            {
+                tower3.Push(tower1.Pop());
+                return;
             }
-            tower1.Push(tower3.Peek());   
-            tower3.Pop(); //31, 2, 0
-            tower3.Push(tower2.Peek());
-            tower2.Pop(); 
-            tower2.Push(tower1.Peek());
-            tower1.Pop();
 
+            TowerOfHanoi(tower1, tower2, tower3, count - 1);
 
-            return TowerOfHanoi(tower1,tower2,tower3, n -1);
+            tower3.Push(tower2.Pop());
+
+            TowerOfHanoi(tower2, tower3, tower1, count - 1);
         }
     }
 }
