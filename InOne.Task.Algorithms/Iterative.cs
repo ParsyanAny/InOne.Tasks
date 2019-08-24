@@ -39,16 +39,20 @@ namespace InOne.Task.Algorithms
                     minIndex = mid + 1;
                 }
             }
-            throw new Exception("Number not found");
+            return -1;
         }
-        public static bool Polindrome(int number)  // Task
+        public static bool Palindrome(int number)  // Task
         {
-            int log = (int)Math.Log(number);
-            //while ()
-            //{
-
-            //}
-
+            int log = MyMath.IntLog10(number);
+            while (number >= 10)
+            {
+                if ((number / MyMath.Pow10(log)) != number % 10)
+                    return false;
+                number = number - (number / MyMath.Pow10(log) * MyMath.Pow10(log));
+                number /= 10;
+                log -= 2;
+                
+            }
             return true;
         }
         public static int MaxPointIndex(int[] arr)
@@ -56,15 +60,15 @@ namespace InOne.Task.Algorithms
             if (arr.Length < 3)
                 throw new Exception("Array is too small");
             int min = 0;  // 1 2 3 4 5 10 25 6 3 2 1 0 - 1 - 2 - 3 - 4 - 5 - 6
-            int max = arr.Length-1;
-            while(min <= max)
+            int max = arr.Length - 1;
+            while (min <= max)
             {
                 int mid = (max + min) / 2;
                 if (arr[mid - 1] < arr[mid] && arr[mid + 1] < arr[mid])
                     return mid;
-                else if (arr[mid] > arr[mid+1])
+                else if (arr[mid] > arr[mid + 1])
                     max = mid - 1;
-                else if (arr[mid] < arr[mid+1])
+                else if (arr[mid] < arr[mid + 1])
                     min = mid + 1;
             }
             return int.MinValue;

@@ -1,12 +1,11 @@
-﻿using InOne.Task.Structure.IMPL;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace InOne.Task.Structure
 {
     public interface IBinaryTree<T>
+        where T : IComparable<T>
     {
+        int Count();
         bool IsEmpty(IBinaryTree<T> tree);
         void Add(T value);
         T Remove(T value);
