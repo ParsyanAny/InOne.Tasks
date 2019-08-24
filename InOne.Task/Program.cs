@@ -88,6 +88,9 @@ namespace InOne.Task
             //int index2 = Recursive.BinarySearch(list, 20, list.Count - 1, 0);
             //Console.WriteLine(index1);
 
+            //int number = 44;
+            //var b = Iterative.Palindrome(number);
+
             //int a = Recursive.BinaryNumber(50);
             //int a = 49;
             //Console.WriteLine(Math.Sqrt(a));
@@ -104,6 +107,10 @@ namespace InOne.Task
             //int[] arr = new int[]{ 1, 2, 3, 4, 5, 10, 25,6, 3, 2, 1, 0, - 1, - 2, - 3, - 4, - 5, - 6 };
             //int index = Iterative.MaxPointIndex(arr);
             //Console.WriteLine(index);
+
+            //int[] arr = {1,1,2,2,3,3,6,6,7,7,9,11,11,15,15};
+            //int a = Iterative.SingleElement(arr);
+            //Console.WriteLine(a);
             #endregion
             #region Triangle
             //Triangle.DrawTriangleRec(60);
@@ -129,23 +136,7 @@ namespace InOne.Task
             //}
             //bt.InOrderPrint(bt);
             #endregion
-            int number = 55152515;
-            // int log = MyMath.IntLog10(number);
-            // int first = number / MyMath.Pow10(log);
-            // int last = number % 10;
-            // //int number2 = number /MyMath.Pow10(log + 1);
-            // //int number2 = number - ((int)(number / Math.Pow(10, log * Math.Pow(10,log))));
-            // int number2 = number - (number / MyMath.Pow10(log) * MyMath.Pow10(log));
-            //// number2 = (number2 / 10);
 
-            // Console.WriteLine(number2);
-            // Console.WriteLine($"first is {first}");
-            // Console.WriteLine($"last is {last}");
-            // Console.WriteLine($"log {log}");
-            // Console.WriteLine(number);
-            //  Console.WriteLine(a);
-            var b = Iterative.Palindrome(number);
-            Console.WriteLine(b);
             Console.ReadLine();
         }
     }
