@@ -14,7 +14,8 @@ namespace InOne.Task.Structure
         int Count();
         bool IsEmpty();
         T First();
-        MyLinkedList<T> Reverse();
+        void Reverse();
+        MyLinkedList<T> ReverseList();
         void InsertById(int index, T data);
         void RemoveById(int index);
     }

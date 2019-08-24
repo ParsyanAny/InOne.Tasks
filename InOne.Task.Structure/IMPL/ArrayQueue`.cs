@@ -15,7 +15,6 @@ namespace InOne.Task.Structure.IMPL
             _arr = new T[_size];
             enq = -1;
         }
-
         public T Dequeue()
         {
             if (deq + 1 != _size)

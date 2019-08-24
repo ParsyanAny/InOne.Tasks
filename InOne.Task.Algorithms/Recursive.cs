@@ -5,6 +5,12 @@ namespace InOne.Task.Algorithms
 {
     public class Recursive
     {
+        public static int Factorial(int number)
+        {
+            if (number == 0)
+                return 1;
+            return number * Factorial(number - 1);
+        }
         public static int FibonachiSlow(int number)
         {
             if (number == 0)
@@ -47,19 +53,19 @@ namespace InOne.Task.Algorithms
                 return BinarySearch(list, number, maxIndex, minIndex = mid + 1);
             }
         }
-        public static void TowerOfHanoi( ArrayStack<int> tower1, ArrayStack<int> tower2, ArrayStack<int> tower3, int count)
+        public static void TowerOfHanoi(ArrayStack<int> tower1, ArrayStack<int> tower2, ArrayStack<int> tower3, int count)
         {
-            if (count == 0)
-            {
-                tower3.Push(tower1.Pop());
-                return;
-            }
+            //if (count == 1)
+            //{
+            //    tower3.Push(tower1.Pop());
+            //    return;
+            //}
 
-            TowerOfHanoi(tower1, tower2, tower3, count - 1);
+            //TowerOfHanoi(tower1, tower2, tower3, count - 1);
 
-            tower3.Push(tower2.Pop());
+            //tower3.Push(tower1.Pop());
 
-            TowerOfHanoi(tower2, tower3, tower1, count - 1);
+            //TowerOfHanoi(tower1, tower2, tower3, count - 1);
         }
     }
 }

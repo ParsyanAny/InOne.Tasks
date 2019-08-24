@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace InOne.Task.Structure.IMPL
 {
-    public class BigInteger  // : ICalculate, IEnumerable
+    public class BigInteger : IEnumerable // : ICalculate, IEnumerable
     {
+        
         private MyLinkedList<int> list;
         public BigInteger(int num)
         {
@@ -14,18 +17,10 @@ namespace InOne.Task.Structure.IMPL
                 num /= 10;
             }
         }
-        private BigInteger() { }
+        public BigInteger() { }
 
-        public BigInteger Sum(int num)
-        {
-            return new BigInteger(num).Sum(this);
-            //return this.Sum(new BigInteger(num));
-        }
-        //public BigInteger Sum(MyLinkedList<int> num)
-        //{
-        //    return new BigInteger(num).Sum(this);
-        //    //return this.Sum(new BigInteger(num));
-        //}
+        #region + - * /
+        public BigInteger Sum(int num) => new BigInteger(num).Sum(this);
         public BigInteger Sum(BigInteger num)
         {
             var list2 = num.list;
@@ -97,6 +92,7 @@ namespace InOne.Task.Structure.IMPL
                 sumList.RemoveFirst();
             return new BigInteger() { list = sumList };
         }
+        public BigInteger Subtraction(int num) => new BigInteger(num).Subtraction(this);
         public BigInteger Subtraction(BigInteger num)
         {
             var list2 = num.list;
@@ -146,6 +142,7 @@ namespace InOne.Task.Structure.IMPL
             }
             return new BigInteger() { list = subList };
         }
+        public BigInteger Multiplication(int num) => new BigInteger(num).Multiplication(this);
         public BigInteger Multiplication(BigInteger number)
         {
             MyLinkedList<int> mulList = new MyLinkedList<int>();
@@ -183,11 +180,11 @@ namespace InOne.Task.Structure.IMPL
                         trList.AddFirst(tr);
                     else
                     {
-                        trList.AddFirst(tr % 10);
+                        //trList.AddFirst(tr % 10);
                         trList.AddFirst(tr / 10);
                     }
                 }
-                if (!mulList.IsEmpty())
+                if (mulList.IsEmpty())
                     mulList = trList;
                 else
                 {
@@ -200,9 +197,30 @@ namespace InOne.Task.Structure.IMPL
             }
             return new BigInteger() { list = mulList };
         }
+        public BigInteger Division(int num) => new BigInteger(num).Division(this);
         public BigInteger Division(BigInteger number)
         {
             throw new NotImplementedException();
+        }
+        #endregion
+
+        public BigInteger Factorial(int number) => new BigInteger(FactorialInt(number));
+        private int FactorialInt(int number)
+        {
+            if (number == 0)
+                return 1;
+            return number * FactorialInt(number - 1);
+        }
+        public void Reverse(BigInteger bigInt)
+        {
+            
+        } // ??????????
+        public IEnumerator GetEnumerator()
+        {
+            foreach (var val in list)
+            {
+                yield return val;
+            }
         }
     }
 }

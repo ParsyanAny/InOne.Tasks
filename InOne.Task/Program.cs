@@ -11,7 +11,9 @@ namespace InOne.Task
         static void Main(string[] args)
         {
             #region Test Structures
-            //MyLinkedList<int> list = new MyLinkedList<int>() { 2, 3, 4, 6, 7, 8, 9 };
+            //MyLinkedList<int> list = new MyLinkedList<int>() { 1,2,3,4,5 };
+            //list.Reverse();
+
             //list.AddFirst(1);
             //list.AddLast(10);
             //list.Add(11);
@@ -60,17 +62,20 @@ namespace InOne.Task
             #endregion
             #region BigInteger
             //var bigI = new BigInteger();
-            //BigInteger bigI1 = new BigInteger(200);
-            //BigInteger muli = new BigInteger(3);
-            //BigInteger sum = bigI1.Sum(22);
-            //BigInteger mul = bigI1.Multiplication(muli);
-            //list = bigI.Sum(25,8);
-            ////list = bigI.Subtraction(5000,4999);
+            BigInteger bigI1 = new BigInteger(9);
+            BigInteger bigI2 = new BigInteger(97);
+            //bigI = bigI.Factorial(5);
 
-            //foreach (var item in list)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            BigInteger muli = bigI1.Multiplication(bigI2);
+
+            ////BigInteger sum = bigI1.Sum(3);
+
+            ////BigInteger mul = bigI1.Multiplication(muli);
+
+            foreach (var item in muli)
+            {
+                Console.WriteLine(item);
+            }
             #endregion
             #region Algorithms
             //int a = Iterative.Fibonachi(10);
@@ -95,13 +100,14 @@ namespace InOne.Task
             //int a = 49;
             //Console.WriteLine(Math.Sqrt(a));
             //Console.WriteLine(qm);
+
             //ArrayStack<int> tower1 = new ArrayStack<int>(3);
             //ArrayStack<int> tower2 = new ArrayStack<int>(3);
             //tower1.Push(3);
             //tower1.Push(2);
             //tower1.Push(1);
             //ArrayStack<int> tower3 = new ArrayStack<int>(3);
-            //Recursive.TowerOfHanoi(tower1,tower2,tower3, tower1.Count());
+            //Recursive.TowerOfHanoi(tower1, tower2, tower3, tower1.Count());
 
 
             //int[] arr = new int[]{ 1, 2, 3, 4, 5, 10, 25,6, 3, 2, 1, 0, - 1, - 2, - 3, - 4, - 5, - 6 };

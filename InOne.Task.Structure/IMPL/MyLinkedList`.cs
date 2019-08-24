@@ -5,15 +5,28 @@ namespace InOne.Task.Structure.IMPL
 {
     public class MyLinkedList<T> : IEnumerable<T>, ILinkedList<T>
     {
-        private Item<T> _head = null;
-        private Item<T> _tail = null;
+        private class Item
+        {
+            public T Data { get; set; }
+            public Item Next { get; set; }
+            public Item(T data)
+            {
+                Data = data;
+            }
+            public override string ToString()
+            {
+                return Data.ToString();
+            }
+        }
+        private Item _head = null;
+        private Item _tail = null;
         private int _count = 0;
         public int _Count { get => _count; }
 
         #region Base Functionality
         public void Add(T data)
         {
-            Item<T> item = new Item<T>(data);
+            Item item = new Item(data);
             if (_head == null)
             {
                 _head = item;
@@ -27,7 +40,7 @@ namespace InOne.Task.Structure.IMPL
         }
         public void AddFirst(T data)
         {
-            Item<T> item = new Item<T>(data);
+            Item item = new Item(data);
 
             if (_tail == null && _head == null)
             {
@@ -43,7 +56,7 @@ namespace InOne.Task.Structure.IMPL
         }
         public void AddLast(T data)
         {
-            Item<T> item = new Item<T>(data);
+            Item item = new Item(data);
             if (_head == null)
             {
                 _head = _tail = item;
@@ -69,7 +82,7 @@ namespace InOne.Task.Structure.IMPL
         #endregion
         #region Extra Functionality
         public T First() => _head.Data;
-        public MyLinkedList<T> Reverse()
+        public MyLinkedList<T> ReverseList()
         {
             MyLinkedList<T> revList = new MyLinkedList<T>();
             var start = _head;
@@ -81,9 +94,23 @@ namespace InOne.Task.Structure.IMPL
             }
             return revList;
         }
+        public void Reverse() //{ 1,2,3,4,5 };
+        {
+            Item prev = null;
+            Item current = _head;
+            Item next = null;  // 2 1 3 4 5
+            while (current != null)
+            {
+                next = current.Next;
+                current.Next = prev;
+                prev = current;
+                current = next; // 2 null 
+            }
+            _head = prev;
+        }
         public void InsertById(int index, T data)
         {
-            Item<T> item = new Item<T>(data);
+            Item item = new Item(data);
             int count = 0;
             var head = _head;
             var previous = head;
