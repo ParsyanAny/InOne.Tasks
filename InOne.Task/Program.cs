@@ -183,7 +183,6 @@ namespace InOne.Task
             //    Console.WriteLine(item);
             //}
             #endregion
-
             Console.ReadLine();
         }
     }

@@ -52,7 +52,6 @@ namespace InOne.Task.Algorithms
                 number = number - (number / MyMath.Pow10(log) * MyMath.Pow10(log));
                 number /= 10;
                 log -= 2;
-
             }
             return true;
         }

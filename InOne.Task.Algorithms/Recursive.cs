@@ -5,52 +5,41 @@ namespace InOne.Task.Algorithms
 {
     public class Recursive
     {
-        public static int Factorial(int number)
+        public static int Factorial(int num) => num == 0 ? 1 : num * Factorial(num - 1);
+        public static int FibonachiSlow(int num)
         {
-            if (number == 0)
-                return 1;
-            return number * Factorial(number - 1);
-        }
-        public static int FibonachiSlow(int number)
-        {
-            if (number == 0)
+            if (num == 0)
                 return 0;
-            if (number == 1)
+            if (num == 1)
                 return 1;
-            return FibonachiSlow(number - 2) + FibonachiSlow(number - 1);
+            return FibonachiSlow(num - 2) + FibonachiSlow(num - 1);
         }
-        public static int FibonachiFast(int number, int first = 0, int second = 1)
+        public static int FibonachiFast(int num, int first = 0, int second = 1)
         {
-            if (number == 0)
+            if (num == 0)
                 return first;
             int temp = first;
-            return FibonachiFast(number - 1, first = second, second = temp + second);
+            return FibonachiFast(num - 1, first = second, second = temp + second);
         }
-        public static int BinaryNumber(int number)
-        {
-            if (number == 0)
-                return 0;
-            else
-                return (number % 2 + 10 * BinaryNumber(number / 2));
-        }
-        public static int BinarySearch(List<int> list, int number, int maxIndex, int minIndex)
+        public static int BinaryNumber(int num) => num == 0 ? 0 : num % 2 + 10 * BinaryNumber(num / 2);
+        public static int BinarySearch(List<int> list, int num, int maxIndex, int minIndex)
         {
             if (minIndex > maxIndex)
             {
                 return 0;
             }
             int mid = (minIndex + maxIndex) / 2;
-            if (number == list[mid])
+            if (num == list[mid])
             {
                 return mid;
             }
-            else if (number < list[mid])
+            else if (num < list[mid])
             {
-                return BinarySearch(list, number, maxIndex = mid - 1, minIndex);
+                return BinarySearch(list, num, maxIndex = mid - 1, minIndex);
             }
             else
             {
-                return BinarySearch(list, number, maxIndex, minIndex = mid + 1);
+                return BinarySearch(list, num, maxIndex, minIndex = mid + 1);
             }
         }
         public static void TowerOfHanoi(ArrayStack<int> tower1, ArrayStack<int> tower2, ArrayStack<int> tower3, int count)
