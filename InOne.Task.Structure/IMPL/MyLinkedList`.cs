@@ -170,7 +170,7 @@ namespace InOne.Task.Structure.IMPL
         }
         #endregion
 
-        #region Iterator
+        #region IEnumerator IMPL
         public IEnumerator<T> GetEnumerator()
         {
             var current = _head;

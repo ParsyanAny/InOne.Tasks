@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace InOne.Task.Structure.IMPL
 {
-    public class BinaryTree<T> : IEnumerable<T>, IBinaryTree<T>
+    public class BinaryTree<T> : IEnumerable<T>//, IBinaryTree<T>
         where T : IComparable<T>
     {
         public class Node : IComparable<Node>
@@ -22,8 +22,6 @@ namespace InOne.Task.Structure.IMPL
                 return _data.CompareTo(other._data);
             }
         }
-        private BinaryTree<Node> leftTree;
-        private BinaryTree<Node> rightTree;
         private Node _root = null;
         private Node _current = null;
         private int _count = 0;
@@ -72,23 +70,48 @@ namespace InOne.Task.Structure.IMPL
                 }
             }
         }
+        public bool Contains(T value)
+        {
+            var current = _root;
+            Node parent = null;
+
+            while (current != null)
+            {
+                var result = current._data.CompareTo(value);
+                if (result > 0)
+                {
+                    parent = current;
+                    current = current._left;
+                }
+                else if (result < 0)
+                {
+                    parent = current;
+                    current = current._right;
+                }
+                else
+                    break;
+            }
+            return current != null;
+        }
         public T Remove(T data) //????????????
         {
             throw new NotImplementedException();
         }
-        public bool Contains(T value) //??????????????????
-        {
-            return ToString().Contains(value.ToString());
-        }
         public T[] ToArray() // ????????????????
         {
+            T[] arr = new T[_count];
+            return toArray(_root, arr);
+        }
+        private T[] toArray(Node node, T[] arr)
+        {
             int count = 0;
-            T[] arr = new T[this._Count];
-            foreach (T item in this)
-            {
-                arr[count] = item;
-                count++;
-            }
+            if (node == null)
+                return arr;
+            toArray(node._left,arr);
+            arr[count]= node._data;
+            toArray(node._right,arr);
+            arr[count]= node._data;
+            count++;
             return arr;
         }
         public int Count() => _count;
@@ -129,15 +152,16 @@ namespace InOne.Task.Structure.IMPL
         #endregion
 
         #region IEnumerable IMPL
-        public IEnumerator<T> GetEnumerator() // ????
+        public IEnumerator<T> GetEnumerator(Node node)
         {
-            throw new NotImplementedException();
-            //return EnumerableImpl(_root);
+            if (node == null)
+                yield break;
+            GetEnumerator(node._left);
+            GetEnumerator(node._right);
+            yield return node._data;
         }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerator<T> GetEnumerator() => GetEnumerator(_root);
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this).GetEnumerator();
         #endregion 
     }
 }

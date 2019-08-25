@@ -10,7 +10,7 @@ namespace InOne.Task
     {
         static void Main(string[] args)
         {
-            #region Test Structures
+            #region Structures
             #region MyLinkedList
             //MyLinkedList<int> list = new MyLinkedList<int>() { 1,2,3,4,5 };
             //list.Reverse();
@@ -42,7 +42,7 @@ namespace InOne.Task
             //arq.Enqueue(4);
             //arq.Enqueue(5);
             //arq.Enqueue(5);
-            // arq.Reverse();
+            //arq.Reverse();
             //foreach (var item in arq)
             //{
             //    Console.WriteLine(item);
@@ -176,11 +176,12 @@ namespace InOne.Task
             //bt.InOrderPrint();
             //Console.WriteLine();
             //bt.PostOrderPrint();
-
+            //bool res = bt.Contains(22);
+            //Console.WriteLine(res);
             //var arr = bt.ToArray();
             //foreach (var item in bt)
             //{
-            //    Console.WriteLine(item);
+            //    Console.Write(item + " ");
             //}
             #endregion
             Console.ReadLine();

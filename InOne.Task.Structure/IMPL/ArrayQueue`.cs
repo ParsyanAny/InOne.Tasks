@@ -58,9 +58,7 @@ namespace InOne.Task.Structure.IMPL
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var item in _arr)
-            {
                 yield return item;
-            }
         }
         IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this).GetEnumerator();
         #endregion
