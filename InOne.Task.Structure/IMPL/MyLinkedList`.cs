@@ -79,14 +79,15 @@ namespace InOne.Task.Structure.IMPL
         }
         public int Count() => _count;
         public bool IsEmpty() => _head == null;
-        #endregion
-        #region Extra Functionality
         public T First() => _head.Data;
+        public T Last() => _tail.Data;
+        #endregion
+
+        #region Extra Functionality
         public MyLinkedList<T> ReverseList()
         {
-            MyLinkedList<T> revList = new MyLinkedList<T>();
+            var revList = new MyLinkedList<T>();
             var start = _head;
-
             while (start != null)
             {
                 revList.AddFirst(start.Data);
@@ -94,17 +95,17 @@ namespace InOne.Task.Structure.IMPL
             }
             return revList;
         }
-        public void Reverse() //{ 1,2,3,4,5 };
+        public void Reverse()
         {
             Item prev = null;
             Item current = _head;
-            Item next = null;  // 2 1 3 4 5
+            Item next = null;
             while (current != null)
             {
                 next = current.Next;
                 current.Next = prev;
                 prev = current;
-                current = next; // 2 null 
+                current = next;
             }
             _head = prev;
         }
@@ -151,7 +152,24 @@ namespace InOne.Task.Structure.IMPL
                 count++;
             }
         }
+        public void RemoveLast()
+        {
+            Item current = _head;
+            if (_head == null) return;
+            if (_head.Next == null)
+            {
+                _head = null;
+                return;
+            }
+            while (current.Next != null)
+            {
+                _tail = current;
+                current = current.Next;
+            }
+            _tail.Next = null;
+        }
         #endregion
+
         #region Iterator
         public IEnumerator<T> GetEnumerator()
         {
@@ -162,10 +180,7 @@ namespace InOne.Task.Structure.IMPL
                 current = current.Next;
             }
         }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable)this).GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this).GetEnumerator();
         #endregion
     }
 }

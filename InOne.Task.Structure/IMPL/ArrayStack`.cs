@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace InOne.Task.Structure.IMPL
 {
-   public class ArrayStack<T> : IStack<T>
+   public class ArrayStack<T> : IStack<T>, IEnumerable<T>
     {
         private T[] _arr;
         private int _top;
@@ -27,7 +29,26 @@ namespace InOne.Task.Structure.IMPL
         }
         public void Reverse()
         {
-            
+            int mid = (_arr.Length - 1) / 2;
+            int max = _arr.Length - 1;
+            for (int i = 0; i < mid; i++)
+            {
+                T temp = _arr[i];
+                _arr[i] = _arr[max];
+                _arr[max] = temp;
+                max--;
+            }
         }
+
+        #region IEnumerator IMPL
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in _arr)
+            {
+                yield return item;
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this).GetEnumerator();
+        #endregion
     }
 }

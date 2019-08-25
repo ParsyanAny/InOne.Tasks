@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace InOne.Task.Structure.IMPL
 {
-    public class ArrayQueue<T> : IQueue<T>
+    public class ArrayQueue<T> : IQueue<T>, IEnumerable<T>
     {
         private T[] _arr;
         private int enq = -1;
@@ -15,6 +17,7 @@ namespace InOne.Task.Structure.IMPL
             _arr = new T[_size];
             enq = -1;
         }
+
         public T Dequeue()
         {
             if (deq + 1 != _size)
@@ -28,9 +31,8 @@ namespace InOne.Task.Structure.IMPL
         public T Peek() => _arr[0];
         public void Enqueue(T data)
         {
-            if (deq != 0 && enq != 0 && deq != enq)
-                throw new Exception();
-
+            //if (deq != 0 && enq != 0 && deq != enq)
+            //    throw new Exception();
             if (enq + 1 != _size)
                 enq++;
             else
@@ -41,7 +43,26 @@ namespace InOne.Task.Structure.IMPL
         public int Count() => _arr.Length;
         public void Reverse()
         {
-
+            int mid = (_arr.Length - 1) / 2;
+            int max = _arr.Length - 1;
+            for (int i = 0; i < mid; i++)
+            {
+                T temp = _arr[i];
+                _arr[i] = _arr[max];
+                _arr[max] = temp;
+                max--;
+            }
         }
+
+        #region IEnumerator IMPL
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in _arr)
+            {
+                yield return item;
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this).GetEnumerator();
+        #endregion
     }
 }

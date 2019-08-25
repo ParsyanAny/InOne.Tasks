@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace InOne.Task.Structure.IMPL
 {
-    public class BinaryTree<T> : IEnumerable<T>//, IBinaryTree<T>
+    public class BinaryTree<T> : IEnumerable<T>, IBinaryTree<T>
         where T : IComparable<T>
     {
-        private class Node : IComparable<Node>
+        public class Node : IComparable<Node>
         {
             public Node _left = null;
             public Node _right = null;
@@ -22,125 +22,122 @@ namespace InOne.Task.Structure.IMPL
                 return _data.CompareTo(other._data);
             }
         }
+        private BinaryTree<Node> leftTree;
+        private BinaryTree<Node> rightTree;
         private Node _root = null;
+        private Node _current = null;
         private int _count = 0;
 
         public int _Count { get { return _count; } }
 
-        #region Base Functionality
-        public void Add(T date)
+        #region Base Functionality (Add, Contains, ToArray, IsEmpty, Count)
+        public void Add(T data)
         {
-            Node node = new Node(date);
+            Node newNode = new Node(data);
+            Node trPar = null;
 
             if (_root == null)
             {
-                _root = node;
+                _root = newNode;
                 _count++;
             }
-            if (_root == node)
+            else
             {
-                return;
-            }
-            else if (node._data.CompareTo(_root._data) == -1)
-            {
-                if (_root == null)
+                _current = _root;
+                while (true)
                 {
-                    _root = node;
-                    _count++;
-
-
-                }
-                else
-                {
-                    _root._left = node;
-                    _count++;
-
-                }
-            }
-            else if (node._data.CompareTo(_root._data) == 1)
-            {
-                if (_root == null)
-                {
-                    _root._right = node;
-                    _count++;
-
-                }
-                else
-                {
-                    _root._right = node;
-                    _count++;
-
+                    trPar = _current;
+                    if (data.CompareTo(_current._data) == -1)
+                    {
+                        _current = _current._left;
+                        if (_current == null)
+                        {
+                            trPar._left = newNode;
+                            newNode._parent = trPar;
+                            _count++;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        _current = _current._right;
+                        if (_current == null)
+                        {
+                            trPar._right = newNode;
+                            newNode._parent = trPar;
+                            _count++;
+                            return;
+                        }
+                    }
                 }
             }
         }
-        public T Remove(T node) //????????????
+        public T Remove(T data) //????????????
         {
             throw new NotImplementedException();
-            _count--;
         }
         public bool Contains(T value) //??????????????????
         {
             return ToString().Contains(value.ToString());
         }
-        public T[] ToArray(T[] arr, int count = 0) // ????????????????
+        public T[] ToArray() // ????????????????
         {
-            if (count >= _count)
-                return arr;
-            // T[] arr = new T[_count];
-            if (_root._left != null)
-                ToArray(arr, count++);
-            arr[count] = _root._data;
-            if (_root._right != null)
-                ToArray(arr, count++);
-           return arr;
+            int count = 0;
+            T[] arr = new T[this._Count];
+            foreach (T item in this)
+            {
+                arr[count] = item;
+                count++;
+            }
+            return arr;
         }
-        public bool IsEmpty(BinaryTree<T> tree) => _root == null;
         public int Count() => _count;
+        public bool IsEmpty(IBinaryTree<T> tree) => _root == null;
+        #endregion
 
         #region PreOrder, InOrder, PostOrder Write Recursive
+        public void PreOrderPrint() => printPreOrder(_root);
+        public void InOrderPrint() => printInOrder(_root);
+        public void PostOrderPrint() => printPostOrder(_root);
 
-        public void PreOrderPrint(T tree)
+        #region Private Part
+        private void printInOrder(Node node)
         {
-            Console.Write(_root._data.ToString());
-            if (_root._left != null)
-                PreOrderPrint(_root._left._data);
-            if (_root._right != null)
-                PreOrderPrint(_root._right._data);
+            if (node == null)
+                return;
+            printInOrder(node._left);
+            Console.Write(node._data + " ");
+            printInOrder(node._right);
         }
-
-        public void InOrderPrint(T tree)
+        private void printPostOrder(Node node)
         {
-            if (_root._left != null)
-                InOrderPrint(_root._left._data);
-            Console.Write(_root._data.ToString() + "\n");
-            if (_root._right != null)
-                InOrderPrint(_root._right._data);
+            if (node == null)
+                return;
+            printInOrder(node._left);
+            printInOrder(node._right);
+            Console.Write(node._data + " ");
         }
-
-        public void PostOrderPrint(T tree)
+        private void printPreOrder(Node node)
         {
-            if (_root._left != null)
-                PostOrderPrint(_root._left._data);
-            if (_root._right != null)
-                PostOrderPrint(_root._right._data);
-            Console.Write(_root._data.ToString());
+            if (node == null)
+                return;
+            Console.Write(node._data + " ");
+            printInOrder(node._left);
+            printInOrder(node._right);
         }
         #endregion
         #endregion
 
-        public IEnumerator<T> GetEnumerator()
+        #region IEnumerable IMPL
+        public IEnumerator<T> GetEnumerator() // ????
         {
-            if (_root._left != null)
-                InOrderPrint(_root._left._data);
-            yield return _root._data;
-            if (_root._right != null)
-                InOrderPrint(_root._right._data);
+            throw new NotImplementedException();
+            //return EnumerableImpl(_root);
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
         }
-
-
+        #endregion 
     }
 }

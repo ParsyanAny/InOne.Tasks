@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace InOne.Task.Structure
+﻿namespace InOne.Task.Structure
 {
     public interface IStack<T>
     {
-        T Pop(); // Removes top element
-        void Push(T data); // Adds an element on top
-        T Peek(); // Gets element on top
+        bool IsEmpty();
+        T Peek(); 
+        T Pop(); 
+        void Push(T data); 
         void Reverse();
         int Count();
-        bool IsEmpty();
     }
 }

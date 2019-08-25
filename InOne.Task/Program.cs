@@ -11,9 +11,11 @@ namespace InOne.Task
         static void Main(string[] args)
         {
             #region Test Structures
+            #region MyLinkedList
             //MyLinkedList<int> list = new MyLinkedList<int>() { 1,2,3,4,5 };
             //list.Reverse();
-
+            //list.RemoveLast();
+            //list.Add(7);
             //list.AddFirst(1);
             //list.AddLast(10);
             //list.Add(11);
@@ -30,24 +32,50 @@ namespace InOne.Task
             //{
             //    Console.Write(item + " ");
             //}
-            #region ArrayQueue
+            #endregion
 
+            #region ArrayQueue
+            //ArrayQueue<int> arq = new ArrayQueue<int>(5);
+            //arq.Enqueue(1);
+            //arq.Enqueue(2);
+            //arq.Enqueue(3);
+            //arq.Enqueue(4);
+            //arq.Enqueue(5);
+            //arq.Enqueue(5);
+            // arq.Reverse();
+            //foreach (var item in arq)
+            //{
+            //    Console.WriteLine(item);
+            //}
             #endregion
+
             #region ArrayStack
-            //ArrayStack<int> arrSt = new ArrayStack<int>(15);
-            //arrSt.Push(1);
-            //arrSt.Push(2);
-            //arrSt.Push(3);
-            //arrSt.Pop();
-            //ArrayStack<int> ar = new ArrayStack<int>(5);
-            //ar.Push(222);
-            //ar.Push(555);
-            //ar.Push(666);
+            //ArrayStack<int> ars = new ArrayStack<int>(3);
+            //ars.Push(1);
+            //ars.Push(2);
+            //ars.Push(3);
+            //ars.Pop();
+            //ars.Reverse();
+            //Console.WriteLine(ars.Pop());
+            //foreach (var item in ars)
+            //{
+            //    Console.WriteLine(item);
+            //}
             #endregion
+
             #region LinkedQueue
-            //LinkedQueue<int> q = new LinkedQueue<int>();
-            //q.Enqueue(6);
+            //LinkedQueue<int> queue = new LinkedQueue<int>();
+            //queue.Enqueue(1);
+            //queue.Enqueue(2);
+            //queue.Enqueue(3);
+            //queue.Enqueue(4);
+            //queue.Dequeue();
+            //foreach (var item in queue)
+            //{
+            //    Console.WriteLine(item);
+            //}
             #endregion
+
             #region LinkedStack
             //LinkedStack<int> ls = new LinkedStack<int>();
             //ls.Push(5);
@@ -57,26 +85,33 @@ namespace InOne.Task
             //st.Push("A");
             //st.Push("B");
             //st.Push("C");
+            //st.Reverse();
+            //foreach (var item in st)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //  st.Peek();
             #endregion
-            //Console.WriteLine(q.Dequeue());
             #endregion
+
             #region BigInteger
             //var bigI = new BigInteger();
-            BigInteger bigI1 = new BigInteger(9);
-            BigInteger bigI2 = new BigInteger(97);
+            //BigInteger bigI1 = new BigInteger(9);
+            //BigInteger bigI2 = new BigInteger(97);
             //bigI = bigI.Factorial(5);
 
-            BigInteger muli = bigI1.Multiplication(bigI2);
+            //BigInteger muli = bigI1.Multiplication(bigI2);
 
             ////BigInteger sum = bigI1.Sum(3);
 
             ////BigInteger mul = bigI1.Multiplication(muli);
 
-            foreach (var item in muli)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in muli)
+            //{
+            //    Console.WriteLine(item);
+            //}
             #endregion
+
             #region Algorithms
             //int a = Iterative.Fibonachi(10);
 
@@ -118,9 +153,11 @@ namespace InOne.Task
             //int a = Iterative.SingleElement(arr);
             //Console.WriteLine(a);
             #endregion
+
             #region Triangle
             //Triangle.DrawTriangleRec(60);
             #endregion
+
             #region Binary tree
             //BinaryTree<int> bt = new BinaryTree<int>
             //{
@@ -131,16 +168,20 @@ namespace InOne.Task
             //    -8,
             //    1
             //};
-            //string str = bt.ToString();
-            //bool a =  bt.Contains(-5);
-            //Console.WriteLine(str);
-            //var arr = new int[6];
-            //bt.ToArray(arr);
-            //foreach (var item in arr)
+            //int count = bt._Count;
+            //bt.Remove(2);
+            //Console.WriteLine(count);
+            //bt.PreOrderPrint();
+            //Console.WriteLine();
+            //bt.InOrderPrint();
+            //Console.WriteLine();
+            //bt.PostOrderPrint();
+
+            //var arr = bt.ToArray();
+            //foreach (var item in bt)
             //{
             //    Console.WriteLine(item);
             //}
-            //bt.InOrderPrint(bt);
             #endregion
 
             Console.ReadLine();
