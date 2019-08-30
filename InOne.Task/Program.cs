@@ -227,7 +227,7 @@ namespace InOne.Task
             //}
             //bst.InOrderPrint();
             //bst.Remove(30);
-            bst.InOrderPrint();
+            //bst.InOrderPrint();
             //Console.WriteLine(aa.Contains(20)); 
             //Console.WriteLine(aa.Count());
             #endregion
