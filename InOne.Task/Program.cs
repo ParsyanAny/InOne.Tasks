@@ -96,17 +96,31 @@ namespace InOne.Task
 
             #region BigInteger
             //var bigI = new BigInteger();
-            //BigInteger bigI1 = new BigInteger(9);
+            //BigInteger bigI1 = new BigInteger(-10);
+            //BigInteger bigI2 = new BigInteger(10);
+            //bigI = bigI1.Sum(bigI2);
+            //Console.WriteLine(bigI.Sign);
+            //foreach (var item in bigI)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //MyLinkedList<int> to = new MyLinkedList<int>();
+            //to.Add(4);
+            //to.Add(5);
+            //to.Add(5);
+
+            // int a = bigI1.Compare(to);
+            //Console.WriteLine(a);
             //BigInteger bigI2 = new BigInteger(97);
             //bigI = bigI.Factorial(5);
-
+            //bigI.Reverse();
             //BigInteger muli = bigI1.Multiplication(bigI2);
 
             ////BigInteger sum = bigI1.Sum(3);
 
             ////BigInteger mul = bigI1.Multiplication(muli);
 
-            //foreach (var item in muli)
+            //foreach (var item in to)
             //{
             //    Console.WriteLine(item);
             //}
@@ -143,7 +157,10 @@ namespace InOne.Task
             //tower1.Push(1);
             //ArrayStack<int> tower3 = new ArrayStack<int>(3);
             //Recursive.TowerOfHanoi(tower1, tower2, tower3, tower1.Count());
-
+            //foreach (var item in tower3)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             //int[] arr = new int[]{ 1, 2, 3, 4, 5, 10, 25,6, 3, 2, 1, 0, - 1, - 2, - 3, - 4, - 5, - 6 };
             //int index = Iterative.MaxPointIndex(arr);
@@ -159,7 +176,7 @@ namespace InOne.Task
             #endregion
 
             #region Binary tree
-            //BinaryTree<int> bt = new BinaryTree<int>
+            //BinaryTree<int> bt = new BinaryTree<int>()
             //{
             //    2,
             //    20,
@@ -168,11 +185,18 @@ namespace InOne.Task
             //    -8,
             //    1
             //};
+            //foreach (var item in bt)
+            //{
+            //    Console.WriteLine(item);
+            //}
             //int count = bt._Count;
             //bt.Remove(2);
             //Console.WriteLine(count);
             //bt.PreOrderPrint();
             //Console.WriteLine();
+            //bt.InOrderPrint();
+            //Console.WriteLine();
+            //bt.Remove(1);
             //bt.InOrderPrint();
             //Console.WriteLine();
             //bt.PostOrderPrint();
@@ -184,6 +208,30 @@ namespace InOne.Task
             //    Console.Write(item + " ");
             //}
             #endregion
+
+            #region Binary Search Tree
+            BinarySearchTreeAVL<int> bst = new BinarySearchTreeAVL<int>();// { 10,2,30,5,9,2,99,0,25,98 };
+            bst.Add(10);
+            bst.Add(11);
+            bst.Add(12);
+            bst.Add(13);
+
+            //foreach (var item in bst)
+            //{
+
+            //}
+            //var arr = aa.ToArray();
+            //foreach (var item in arr)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //bst.InOrderPrint();
+            //bst.Remove(30);
+            bst.InOrderPrint();
+            //Console.WriteLine(aa.Contains(20)); 
+            //Console.WriteLine(aa.Count());
+            #endregion
+
             Console.ReadLine();
         }
     }

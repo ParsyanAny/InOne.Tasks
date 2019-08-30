@@ -2,7 +2,7 @@
 
 namespace InOne.Task.Structure
 {
-    public interface IBinaryTree<T>
+    public interface IBinarySearchTree<T>
         where T : IComparable<T>
     {
         void Add(T value);
@@ -10,7 +10,7 @@ namespace InOne.Task.Structure
         bool Contains(T value);
         T[] ToArray();
         int Count();
-        bool IsEmpty(IBinaryTree<T> tree);
+        bool IsEmpty(IBinarySearchTree<T> tree);
 
         void PreOrderPrint();
         void InOrderPrint();
