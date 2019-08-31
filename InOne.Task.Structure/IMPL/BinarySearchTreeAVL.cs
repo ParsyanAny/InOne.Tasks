@@ -11,7 +11,6 @@ namespace InOne.Task.Structure.IMPL
         {
             base.Add(data);
             update(find(data));
-            Console.WriteLine(find(data)._height);
             //if (isBalanced() != true)
             //{
             //    Node current = find(data);
@@ -28,28 +27,21 @@ namespace InOne.Task.Structure.IMPL
 
             //}
         }
-        public void update(Node node)
+        public void update(Node current)
         {
-            if (node._parent == null)
-                return;
-            //if (node._parent._height == node._height + 1)
-            //    return;
-            while (true)
+            Node parent = current._parent;
+            while (current != null && current._parent != null)
             {
-                if (node._parent == null)
-                    return;
-                else if (node._parent._height - node._height < 2)
-                {
-                    balanced(node._parent);
-                }
+                if (parent._height - current._height >= 2)
+                    balanced(current._parent);
+                else if (current._parent._height - current._height == 1)
+                    break ;
                 else
                 {
-                    node._parent._height++;
-                    node = node._parent;
+                    current._parent._height = current._height + 1;
+                    current = current._parent;
                 }
             }
-            return;
-
         }
         public bool balanced(Node node)
         {

@@ -13,7 +13,7 @@ namespace InOne.Task.Structure.IMPL
             public Node _right = null;
             public Node _parent = null;
             public T _data;
-            public int _height;
+            public int _height = 1;
             public Node(T data)
             {
                 _data = data;
@@ -219,7 +219,7 @@ namespace InOne.Task.Structure.IMPL
                             trPar._left = newNode;
                             newNode._parent = trPar;
                             _count++;
-                            newNode._height = 1;
+                           // newNode._height = 1;
                             return newNode;
                         }
                     }
@@ -231,7 +231,7 @@ namespace InOne.Task.Structure.IMPL
                             trPar._right = newNode;
                             newNode._parent = trPar;
                             _count++;
-                            newNode._height = 1;
+                          //  newNode._height = 1;
                             return newNode;
                         }
                     }
@@ -241,12 +241,20 @@ namespace InOne.Task.Structure.IMPL
         #endregion
 
         #region PreOrder, InOrder, PostOrder Write Recursive
+        public void TestInOrderPrint() => testPrintInOrder(_root);
         public void PreOrderPrint() => printPreOrder(_root);
         public void InOrderPrint() => printInOrder(_root);
         public void PostOrderPrint() => printPostOrder(_root);
 
         #region Private Part
-
+        private void testPrintInOrder(Node node)
+        {
+            if (node == null)
+                return;
+            printInOrder(node._left);
+            Console.Write(node._data + " " + node._height + "  ");
+            printInOrder(node._right);
+        }
         private void printInOrder(Node node)
         {
             if (node == null)

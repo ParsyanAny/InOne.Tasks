@@ -173,12 +173,13 @@ namespace InOne.Task
 
             #region Sorting
 
-            int[] arr = {5,6,2,1,4,44,5,3,21,54,5,6};
-            QuickCode.WriteForeach(arr);
+            //int[] arr = {5,6,2,1,4,44,5,3,21,54,5,6};
+            //QuickCode.WriteForeach(arr);
             //Sort<int>.InsertionSort(arr);
             //Sort<int>.BubbleSort(arr);
             //Sort<int>.SelectionSort(arr);
-            QuickCode.WriteForeach(arr);
+            //QuickCode.WriteForeach(arr);
+
             #endregion
 
             #region Triangle
@@ -220,18 +221,15 @@ namespace InOne.Task
             #endregion
 
             #region Binary Search Tree
-            //BinarySearchTreeAVL<int> bst = new BinarySearchTreeAVL<int>();// { 10,2,30,5,9,2,99,0,25,98 };
-            //bst.Add(10);
-            //bst.Add(11);
-            //bst.Add(12);
-            //bst.Add(5);
-            //bst.Add(1);
-            // bst.Add(13);
+            BinarySearchTreeAVL<int> bst = new BinarySearchTreeAVL<int>();// { 10,2,30,5,9,2,99,0,25,98 };
+            bst.Add(10);
+            bst.Add(11);
+            bst.Add(12);
+            bst.Add(5);
+            bst.Add(1);
+            //bst.Add(13);
 
-            //foreach (var item in bst)
-            //{
-
-            //}
+            bst.TestInOrderPrint();
             //var arr = aa.ToArray();
             //foreach (var item in arr)
             //{
@@ -246,7 +244,6 @@ namespace InOne.Task
             //Console.WriteLine(aa.Contains(20)); 
             //Console.WriteLine(aa.Count());
             #endregion
-
 
             Console.ReadLine();
         }
