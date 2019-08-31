@@ -13,6 +13,7 @@ namespace InOne.Task.Structure.IMPL
             public Node _right = null;
             public Node _parent = null;
             public T _data;
+            public int _height;
             public Node(T data)
             {
                 _data = data;
@@ -24,51 +25,15 @@ namespace InOne.Task.Structure.IMPL
         }
         protected Node _root = null;
         protected Node _current = null;
+        
         private int _count = 0;
 
         public int _Count { get { return _count; } }
 
         #region Base Functionality (Add, Contains, ToArray, IsEmpty, Count, Remove)
-        public virtual void Add(T data)
+        public virtual void Add(T data) 
         {
-            Node newNode = new Node(data);
-            Node trPar = null;
-
-            if (_root == null)
-            {
-                _root = newNode;
-                _count++;
-            }
-            else
-            {
-                _current = _root;
-                while (true)
-                {
-                    trPar = _current;
-                    if (data.CompareTo(_current._data) == -1)
-                    {
-                        _current = _current._left;
-                        if (_current == null)
-                        {
-                            trPar._left = newNode;
-                            newNode._parent = trPar;
-                            _count++;
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        _current = _current._right;
-                        if (_current == null)
-                        {
-                            trPar._right = newNode;
-                            newNode._parent = trPar;
-                            _count++;
-                            return;
-                        }
-                    }
-                }
-            }
+           addData(data);
         }
         public bool Contains(T value)
         {
@@ -158,8 +123,8 @@ namespace InOne.Task.Structure.IMPL
                     }
                 }
             }
-                _count--;
-                return current._data;
+            _count--;
+            return current._data;
         }
         public T[] ToArray()
         {
@@ -214,6 +179,65 @@ namespace InOne.Task.Structure.IMPL
             return count;
         }
         private bool leftOrRight(T value, Node node) => node._left._data.CompareTo(value) == 0;
+        protected void swap(Node firstNode, Node secondNote)
+        {
+            Node leftFirst = firstNode._left;
+            Node leftSecond = secondNote._left;
+            Node right1 = firstNode._right;
+            Node right2 = secondNote._right;
+            Node parent1 = firstNode._parent;
+            Node parent2 = secondNote._parent;
+            firstNode._left = leftSecond;
+            secondNote._left = leftFirst;
+            firstNode._right = right2;
+            secondNote._right = right1;
+            firstNode._parent = parent2;
+            secondNote._parent = parent1;
+        }
+        protected Node addData(T data)
+        {
+            Node newNode = new Node(data);
+            Node trPar = null;
+
+            if (_root == null)
+            {
+                _root = newNode;
+                _count++;
+                return newNode;
+            }
+            else
+            {
+                _current = _root;
+                while (true)
+                {
+                    trPar = _current;
+                    if (data.CompareTo(_current._data) == -1)
+                    {
+                         _current = _current._left;
+                        if (_current == null)
+                        {
+                            trPar._left = newNode;
+                            newNode._parent = trPar;
+                            _count++;
+                            newNode._height = 1;
+                            return newNode;
+                        }
+                    }
+                    else
+                    {
+                        _current = _current._right;
+                        if (_current == null)
+                        {
+                            trPar._right = newNode;
+                            newNode._parent = trPar;
+                            _count++;
+                            newNode._height = 1;
+                            return newNode;
+                        }
+                    }
+                }
+            }
+        }
         #endregion
 
         #region PreOrder, InOrder, PostOrder Write Recursive
@@ -261,29 +285,19 @@ namespace InOne.Task.Structure.IMPL
         //        foreach (T child in _root._right.EnumerateNodes())
         //            yield return child;
         //}
-        public IEnumerator<T> GetEnumerator(Node node)
-        {
-            yield return _root._data;
-            if (_root._left != null)
-                foreach (T child in _root._left.GetEnumerator())
-                    yield return child;
-            if (_root._right != null)
-                foreach (T child in _root._right.GetEnumerator())
-                    yield return child;
-            //if (node == null)
-            //    yield break;
-            //GetEnumerator(node._left);
-            //yield return node._data;
-            //GetEnumerator(node._right);
-            //if (node == null)
-            //    yield break;
-            // yield return GetEnumerator(node._left);
-            //yield return node._data;
-            //yield return GetEnumerator(node._right);
-            throw new Exception();
-        }
-        //public IEnumerator<T> GetEnumerator() => GetEnumerator(_root);
-        //IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this).GetEnumerator();
-        #endregion
+        //if (node == null)
+        //    yield break;
+        //GetEnumerator(node._left);
+        //yield return node._data;
+        //GetEnumerator(node._right);
+        //if (node == null)
+        //    yield break;
+        // yield return GetEnumerator(node._left);
+        //yield return node._data;
+        //yield return GetEnumerator(node._right);
+        //throw new Exception();
     }
+    //public IEnumerator<T> GetEnumerator() => GetEnumerator(_root);
+    //IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this).GetEnumerator();
+    #endregion
 }
