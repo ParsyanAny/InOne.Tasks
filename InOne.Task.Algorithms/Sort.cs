@@ -7,7 +7,6 @@ namespace InOne.Task.Algorithms
     {
         public static void BubbleSort(T[] arr)
         {
-            T temp;
             int count = arr.Length;
             for (int i = 0; i < count; i++)
             {

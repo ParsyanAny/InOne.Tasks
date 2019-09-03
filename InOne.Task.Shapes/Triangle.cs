@@ -12,10 +12,10 @@ namespace InOne.Task.Shapes
             int a = 0;
             if (n != a)
             {
-                QuickCode.Write(' ', n);
+                Write(' ', n);
                 a = n;
             }
-            QuickCode.Write('*', k);
+            Write('*', k);
             Console.WriteLine();
             FullTriangleRec(n - 1, k + 2);
         }
@@ -27,7 +27,7 @@ namespace InOne.Task.Shapes
             {
                 if (i == n)
                 {
-                    QuickCode.Write('*', k);
+                    Write('*', k);
                     k += 2;
                 }
                 Console.Write(" ");
@@ -40,9 +40,9 @@ namespace InOne.Task.Shapes
             if (n == 2)
                 return;
 
-            QuickCode.Write(' ', n);
+            Write(' ', n);
             Console.Write("*");
-            QuickCode.Write(' ',skip);
+            Write(' ',skip);
             Console.Write("*");
             Console.WriteLine();
 
@@ -81,7 +81,7 @@ namespace InOne.Task.Shapes
         }
         public static void DrawTriangleRec(int n)
         {
-            QuickCode.Write(' ',n+1);
+            Write(' ',n+1);
             Console.WriteLine("*");
             EmptyTriangleRec(n);
             Console.Write(" ");
@@ -91,5 +91,7 @@ namespace InOne.Task.Shapes
                 n--;
             }
         }
+
+        public static void Write(char ch, int k) => Console.Write(new string(ch, k));
     }
 }

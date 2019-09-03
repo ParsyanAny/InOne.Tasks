@@ -268,7 +268,6 @@ namespace InOne.Task.Structure.IMPL
             int count2 = num.list._Count;
             if (count2 > count1)
                 throw new Exception("Your first number is too small");
-            int tr = 0;
             MyLinkedList<int> divList = new MyLinkedList<int>();
             while (count1 != 0)
             {

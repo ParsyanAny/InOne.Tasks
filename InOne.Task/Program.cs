@@ -12,7 +12,7 @@ namespace InOne.Task
         {
             #region Structures
             #region MyLinkedList
-            //MyLinkedList<int> list = new MyLinkedList<int>() { 1,2,3,4,5 };
+            //MyLinkedList<int> list = new MyLinkedList<int>() { 1, 2, 3, 4, 5 };
             //list.Reverse();
             //list.RemoveLast();
             //list.Add(7);
@@ -26,12 +26,8 @@ namespace InOne.Task
             //Console.WriteLine($"Count = {count} \n");
             //var isEmpty = list.IsEmpty();
             //Console.WriteLine($"IsEmpty = {isEmpty} \n");
-
             //Console.WriteLine("This is a normal list");
-            //foreach (var item in list)
-            //{
-            //    Console.Write(item + " ");
-            //}
+            //list.ForeachWrite();
             #endregion
 
             #region ArrayQueue
@@ -43,10 +39,7 @@ namespace InOne.Task
             //arq.Enqueue(5);
             //arq.Enqueue(5);
             //arq.Reverse();
-            //foreach (var item in arq)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            //arq.ForeachWrite();
             #endregion
 
             #region ArrayStack
@@ -57,10 +50,7 @@ namespace InOne.Task
             //ars.Pop();
             //ars.Reverse();
             //Console.WriteLine(ars.Pop());
-            //foreach (var item in ars)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            //ars.ForeachWrite();
             #endregion
 
             #region LinkedQueue
@@ -70,10 +60,7 @@ namespace InOne.Task
             //queue.Enqueue(3);
             //queue.Enqueue(4);
             //queue.Dequeue();
-            //foreach (var item in queue)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            //queue.ForeachWrite();
             #endregion
 
             #region LinkedStack
@@ -86,10 +73,7 @@ namespace InOne.Task
             //st.Push("B");
             //st.Push("C");
             //st.Reverse();
-            //foreach (var item in st)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            //st.ForeachWrite();
             //  st.Peek();
             #endregion
             #endregion
@@ -221,23 +205,26 @@ namespace InOne.Task
             #endregion
 
             #region Binary Search Tree
+            //BinarySearchTree<int> bst = new BinarySearchTree<int>();// { 10,2,30,5,9,2,99,0,25,98 };
             BinarySearchTreeAVL<int> bst = new BinarySearchTreeAVL<int>();// { 10,2,30,5,9,2,99,0,25,98 };
-            bst.Add(10);
-            bst.Add(11);
-            bst.Add(12);
-            bst.Add(5);
             bst.Add(1);
+            //bst.Add(-5);
+            //bst.Add(-65);
+            bst.Add(2);
+            bst.Add(3);
+            //bst.Add(5);
+            //bst.Add(1);
+
+            bst.InOrderPrint();
+            //bst.ForeachWrite();
             //bst.Add(13);
 
-            bst.TestInOrderPrint();
-            //var arr = aa.ToArray();
-            //foreach (var item in arr)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            //var arr = bst.ToArray();
+            //arr.ForeachWrite();
             //bst.InOrderPrint();
-            //bst.Remove(30);
-            //bst.PreOrderPrint();
+            //bst.Remove(5);
+            //bst.InOrderPrint();
+            //bst.InOrderPrint();
             //Console.WriteLine();
             //bst.InOrderPrint();
             //bst.PreOrderPrint();
@@ -249,4 +236,4 @@ namespace InOne.Task
         }
     }
 }
-    
+

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace InOne.Task.Structure.IMPL
 {
@@ -11,91 +9,131 @@ namespace InOne.Task.Structure.IMPL
         {
             base.Add(data);
             update(find(data));
-            //if (isBalanced() != true)
-            //{
-            //    Node current = find(data);
-            //    Balanced();
-            //}
-            //Console.WriteLine(_leftHeight);
-            //Console.WriteLine(_rightHeight);
         }
-        public override T Remove(T value)
-        {
-            return base.Remove(value);
-            //if (isBalanced(_root) != true)
-            //{
+        public override T Remove(T value) => remove(value);
 
-            //}
-        }
-        public void update(Node current)
+        #region private Functionality (getHeight, isBalanced)
+        private T remove(T value)
         {
-            Node parent = current._parent;
-            while (current != null && current._parent != null)
+            Node removeNode = find(value);
+            base.Remove(value);
+            update(find(value));
+            return removeNode.Data;
+        }
+        int getBalance(Node node)
+        {
+            if (node == null)
             {
-                if (parent._height - current._height >= 2)
-                    balanced(current._parent);
-                else if (current._parent._height - current._height == 1)
-                    break ;
+                return 0;
+            }
+            int leftH = node.Left != null ? node.Left.Height : 1;
+            int rightH = node.Right != null ? node.Right.Height : 1;
+            int balance;
+
+            balance = leftH - rightH;
+
+            return balance;
+        }
+        private void update(Node current)
+        {
+            Node cur = current;
+            Node parent = current.Parent;
+            while (current != null)
+            {
+                int parH = current.Parent != null ? current.Parent.Height : 1;
+                int curLH = current.Left != null ? current.Left.Height : 1;
+                int curRH = current.Right != null ? current.Right.Height : 1;
+
+                if (current.Height - curLH >= 2 || current.Height - curRH >= 2)
+                {
+                    balanced(cur);
+                    return;
+                }
+                else if (current.Parent != null && current.Parent.Height - current.Height == 1)
+                    return;
                 else
                 {
-                    current._parent._height = current._height + 1;
-                    current = current._parent;
+                    if (current.Parent != null)
+                        current.Parent.Height = current.Height + 1;
+                    current = current.Parent;
                 }
             }
         }
-        public bool balanced(Node node)
+        public bool balanced(Node current)
         {
-            //if (fact >= 1)
-            //{
-            //    if (balanceFactor() > 0)
-            //        node = swapLL(node);
-            //    else
-            //        node = swapLR(node);
-            //}
-            //else if (fact <= -1)
-            //{
-            //    if (balanceFactor() > 0)
-            //        node = swapRL(node);
-            //    else
-            //        node = swapRR(node);
-            //}
+            int balance = getBalance(current.Parent.Parent);
+
+            if (balance > 0)
+            {
+                if (getBalance(current.Left) > 0)
+                    current = rotateLL(current.Parent);
+                else
+                    current = rotateLR(current.Parent);
+            }
+            else if (balance < 0)
+            {
+                if (getBalance(current.Right) > 0)
+                    current = rotateRL(current.Parent);
+                else
+                    current = rotateRR(current.Parent);
+            }
             return true;
         }
-        #region private Functionality (getHeight, isBalanced)
-        private Node swapRR(Node node)
+        private Node rotateRR(Node parent)
         {
-            //Node current = parent._right;
-            //parent._right = current._left;
-            //current._left = parent;
-            Node nodePer = node._parent;
-            node._parent = nodePer._parent;
-            node._left = nodePer;
-            nodePer._left = node._left;
-            nodePer._right = node._right;
-            //current._left = parent._parent;
-            //current._parent = parent._parent;
-            //current._parent._parent = parent;
-            //current._left._right = null;
-            return node;
+            Node parpar = parent?.Parent;
+            parent.Parent = parpar?.Parent;
+            parent.Left = parpar;
+            parpar.Right = null;
+            //parent.Left.Height = parent.Height - 1;
+            //parent.Right.Height = parent.Height - 1;
+            if (parpar.Parent == null)
+                _root = parent;
+            else
+                parpar.Parent.Right = parent;
+            updatePost(parent.Parent);
+            //update(parent.Right); // ???
+            //update(parent.Left);  // ???
+            return parent;
+
         }
-        private Node swapLL(Node parent)
+        private Node rotateLL(Node parent)
         {
-            Node current = parent._left;
-            parent._left = current._right;
-            current._right = parent;
-            return current;
+            Node parpar = parent.Parent;
+            parent.Parent = parpar?.Parent;
+            parent.Right = parpar;
+            parpar.Left = null;
+            
+            parent.Left.Height = parent.Height - 1;
+            parent.Right.Height = parent.Height - 1;
+            if (parpar.Parent == null)
+                _root = parent;
+            else
+                parpar.Parent.Left = parent;
+            //update(parent);
+            return parent;
         }
-        private Node swapLR(Node parent)
+        private Node rotateLR(Node parent)
         {
-            Node current = parent._left;
-            parent._left = swapRR(current);
-            return swapLL(parent);
+            Node current = parent.Left;
+            parent.Left = rotateRR(current);
+            return rotateLL(parent);
         }
-        private Node swapRL(Node parent)
+        private Node rotateRL(Node parent)
         {
-            Node current = parent._right;
-            parent._right = swapLL(current);
-            return swapRR(parent);
+            Node current = parent.Right;
+            parent.Right = rotateLL(current);
+            return rotateRR(parent);
+        }
+        private void updatePost(Node current)
+        {
+            if (current == null)
+                return;
+            current.Height--;
+            if (current.Left != null)
+                updatePost(current.Left);
+            else 
+                updatePost(current.Right);
         }
         #endregion
     }
