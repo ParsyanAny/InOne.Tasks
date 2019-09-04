@@ -16,7 +16,10 @@ namespace InOne.Task.Structure.IMPL
             array = new T[cap];
             lastIndex = 0;
         }
-
+        public CompleteTree(T[] arr)
+        {
+            
+        }
         #region Base Functionality
         public void Add(T data)
         {
@@ -53,6 +56,23 @@ namespace InOne.Task.Structure.IMPL
             }
             return arr;
         }
+        public void Sort()
+        {
+            int index = 0;
+            for (int i = index + 1; i <= index * 2; i++)
+            {
+                for (int y = index; y <= index * 2; y++)
+                {
+                    if (y >= array.Length)
+                        break;
+                    if (array[y].CompareTo(array[y + 1]) == 1)
+                        swap(array, y, y + 1);
+                }
+                if (index == 0)
+                    index++;
+                index = index * 2;
+            }
+        }
         #endregion
 
         #region private Functionality
@@ -70,7 +90,7 @@ namespace InOne.Task.Structure.IMPL
         {
             int leftChildIndex = getLeftChildIndex(parentIndex);
             int rightChildIndex = getRightChildIndex(parentIndex);
-            while(leftChildIndex != -1 && rightChildIndex != -1)
+            while (leftChildIndex != -1 && rightChildIndex != -1)
             {
                 if (array[leftChildIndex].CompareTo(array[rightChildIndex]) == -1)
                 {
@@ -88,9 +108,9 @@ namespace InOne.Task.Structure.IMPL
         }
         private int getParIndex(int childIndex) => (childIndex - 1) / 2;
         private int getLeftChildIndex(int parentIndex)
-            => (2 * parentIndex + 1) <= lastIndex-1 ? 2 * parentIndex + 1 : -1;
+            => (2 * parentIndex + 1) <= lastIndex - 1 ? 2 * parentIndex + 1 : -1;
         private int getRightChildIndex(int parentIndex)
-            => (2 * parentIndex + 2) <= lastIndex-1 ? 2 * parentIndex + 2 : -1;
+            => (2 * parentIndex + 2) <= lastIndex - 1 ? 2 * parentIndex + 2 : -1;
         private void swap(T[] arr, int firstIndex, int secondIndex)
         {
             T temp = arr[firstIndex];

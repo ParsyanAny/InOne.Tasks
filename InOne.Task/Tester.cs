@@ -8,16 +8,17 @@ namespace InOne.Task
     {
         public static void Time(string str, DateTime time) => Console.WriteLine($"\n{str}\nTime = {DateTime.Now - time}");
         public static void Write(char ch, int k) => Console.Write(new string(ch, k) + "\n");
-        public int[] GetRandomArray(int count, int min, int max)
+        public static int[] GetRandomArray(int count, int min, int max)
         {
             Random rand = new Random();
             int[] arr = new int[count];
+            int counter = 0;
             foreach (var item in arr)
             {
-                arr[item] = rand.Next(min,max);
+                arr[counter++] = rand.Next(min,max);
             }
             return arr;
         }
-        public int[] GetRandomArray(int count) =>  GetRandomArray(count, 0, 100);
+        static public int[] GetRandomArray(int count) =>  GetRandomArray(count, 0, 100);
     }
 }

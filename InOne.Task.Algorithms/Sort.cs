@@ -64,9 +64,30 @@ namespace InOne.Task.Algorithms
         {
             
         }
-        public static void BackedSort(T[] arr)
+        public static void BuckedSort(int[] arr)
         {
-
+            int max = int.MinValue;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].CompareTo(max) == 1)
+                    max = arr[i];
+            }
+            int[] ar = new int[max+1];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                ar[arr[i]]++;
+            }
+            int index = 0;
+            int counter = 0;
+            for (int i = 0; i < ar.Length; i++)
+            {
+                int count = ar[index++];
+                while (count > 0)
+                {
+                    arr[counter++] = i;
+                        count--;
+                }
+            }
         }
         private static void swap(T[] arr, int firstIndex, int secondIndex)
         {
