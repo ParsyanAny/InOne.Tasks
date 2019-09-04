@@ -1,4 +1,5 @@
 ﻿using System;
+using InOne.Task.Structure.IMPL;
 
 namespace InOne.Task.Algorithms
 {
@@ -7,25 +8,31 @@ namespace InOne.Task.Algorithms
     {
         public static void BubbleSort(T[] arr)
         {
-            int count = arr.Length;
-            for (int i = 0; i < count; i++)
+            int arrCount = arr.Length;
+            for (int i = 0; i < arrCount; i++)
             {
-                for (int j = 0; j < count - 1; j++)
+                int count = 0;
+                for (int j = 0; j < arrCount - 1; j++)
                 {
                     if (arr[j].CompareTo(arr[j + 1]) == 1)
-                        Swap(arr, j, j + 1);
+                    {
+                        swap(arr, j, j + 1);
+                        count++;
+                    }
                 }
+                if (count == 0)
+                    break;
             }
         }
         public static void InsertionSort(T[] arr)
         {
-            int count = arr.Length;
-            for (int i = 0; i < count - 1; i++)
+            int arrCount = arr.Length;
+            for (int i = 0; i < arrCount - 1; i++)
             {
                 for (int j = i + 1; j > 0; j--)
                 {
                     if (arr[j - 1].CompareTo(arr[j]) == 1)
-                        Swap(arr, j, j - 1);
+                        swap(arr, j, j - 1);
                 }
             }
         }
@@ -42,10 +49,26 @@ namespace InOne.Task.Algorithms
                     if (arr[index].CompareTo(arr[smallestIndex]) == -1)
                         smallestIndex = index;
                 }
-                Swap(arr,i, smallestIndex);
+                swap(arr, i, smallestIndex);
             }
         }
-        public static void Swap(T[] arr, int firstIndex, int secondIndex)
+        public static void QuickSort(T[] arr)
+        {
+
+        }
+        public static void MarginSort(T[] arr)
+        {
+
+        }
+        public static void HeapSort(T[] arr)
+        {
+            
+        }
+        public static void BackedSort(T[] arr)
+        {
+
+        }
+        private static void swap(T[] arr, int firstIndex, int secondIndex)
         {
             T temp = arr[firstIndex];
             arr[firstIndex] = arr[secondIndex];

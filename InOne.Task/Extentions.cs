@@ -12,5 +12,10 @@ namespace InOne.Task
             }
             Console.WriteLine();
         }
+        public static void WriteItem<T>(this T item)
+        {
+            Console.Write(item + " ");
+        }
+        
     }
 }

@@ -3,6 +3,7 @@ using InOne.Task.Algorithms;
 using InOne.Task.Shapes;
 using System;
 using System.Collections.Generic;
+using InOne.Task.Structure;
 
 namespace InOne.Task
 {
@@ -157,7 +158,8 @@ namespace InOne.Task
 
             #region Sorting
 
-            //int[] arr = {5,6,2,1,4,44,5,3,21,54,5,6};
+            int[] arr = { 1, 2, 3, 4, 5 };
+            //Sort<int>.BubbleSort(arr);
             //QuickCode.WriteForeach(arr);
             //Sort<int>.InsertionSort(arr);
             //Sort<int>.BubbleSort(arr);
@@ -206,16 +208,16 @@ namespace InOne.Task
 
             #region Binary Search Tree
             //BinarySearchTree<int> bst = new BinarySearchTree<int>();// { 10,2,30,5,9,2,99,0,25,98 };
-            BinarySearchTreeAVL<int> bst = new BinarySearchTreeAVL<int>();// { 10,2,30,5,9,2,99,0,25,98 };
-            bst.Add(1);
+            //BinarySearchTreeAVL<int> bst = new BinarySearchTreeAVL<int>();// { 10,2,30,5,9,2,99,0,25,98 };
+            //bst.Add(1);
             //bst.Add(-5);
             //bst.Add(-65);
-            bst.Add(2);
-            bst.Add(3);
+            //bst.Add(2);
+            //bst.Add(3);
             //bst.Add(5);
             //bst.Add(1);
 
-            bst.InOrderPrint();
+            //bst.InOrderPrint();
             //bst.ForeachWrite();
             //bst.Add(13);
 
@@ -230,6 +232,30 @@ namespace InOne.Task
             //bst.PreOrderPrint();
             //Console.WriteLine(aa.Contains(20)); 
             //Console.WriteLine(aa.Count());
+            #endregion
+
+            #region Complete Tree
+
+            CompleteTree<int> tr = new CompleteTree<int>(10);
+
+            tr.Add(5);
+            tr.Add(7);
+            tr.Add(1);
+            tr.Add(2);
+            tr.Add(12);
+            tr.Add(20);
+            tr.Add(25);
+            tr.Add(30);
+            tr.Add(40);
+            tr.Add(300);
+            int[] array = tr.ToArray();
+            array.ForeachWrite();
+            //tr.RemoveMin();
+            //foreach (var item in tr)
+            //{
+            //    item.WriteItem();
+            //}
+            //Console.WriteLine($"\nThis is your min {tr.GetMin()}");
             #endregion
 
             Console.ReadLine();
