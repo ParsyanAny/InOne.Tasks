@@ -158,9 +158,10 @@ namespace InOne.Task
 
             #region Sorting
 
-            int[] arr = Tester.GetRandomArray(10,0,3);
+            int[] arr = Tester.GetRandomArray(10);
             arr.ForeachWrite();
-            Sort<int>.BuckedSort(arr);
+            Sort<int>.QuickSort(arr);
+            //Sort<int>.BuckedSort(arr);
             arr.ForeachWrite();
             //int[] arr = { 1, 2, 3, 4, 5 };
             //Sort<int>.BubbleSort(arr);

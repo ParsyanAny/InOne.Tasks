@@ -52,17 +52,14 @@ namespace InOne.Task.Algorithms
                 swap(arr, i, smallestIndex);
             }
         }
-        public static void QuickSort(T[] arr)
-        {
-
-        }
+        public static void QuickSort(int[] arr)=> quickSort(arr, 0, arr.Length - 1);
         public static void MarginSort(T[] arr)
         {
 
         }
         public static void HeapSort(T[] arr)
         {
-            
+
         }
         public static void BuckedSort(int[] arr)
         {
@@ -72,7 +69,7 @@ namespace InOne.Task.Algorithms
                 if (arr[i].CompareTo(max) == 1)
                     max = arr[i];
             }
-            int[] ar = new int[max+1];
+            int[] ar = new int[max + 1];
             for (int i = 0; i < arr.Length; i++)
             {
                 ar[arr[i]]++;
@@ -85,15 +82,55 @@ namespace InOne.Task.Algorithms
                 while (count > 0)
                 {
                     arr[counter++] = i;
-                        count--;
+                    count--;
                 }
             }
         }
+
+        #region private Functionality
         private static void swap(T[] arr, int firstIndex, int secondIndex)
         {
             T temp = arr[firstIndex];
             arr[firstIndex] = arr[secondIndex];
             arr[secondIndex] = temp;
         }
+        private static void swap(int[] array, int firstIndex, int secondIndex)
+        {
+            int temp = array[firstIndex];
+            array[firstIndex] = array[secondIndex];
+            array[secondIndex] = temp;
+        }
+        private static int partition(int[] array, int left, int right, int pivot)
+        {
+            while (left <= right)
+            {
+                while (array[left] < pivot)
+                {
+                    left++;
+                }
+                while (array[right] > pivot)
+                {
+                    right--;
+                }
+                if (left <= right)
+                {
+                    swap(array, left, right);
+                    left++;
+                    right--;
+                }
+            }
+            return left;
+        }
+        private static void quickSort(int[] array, int left, int right)
+        {
+            if (left >= right)
+                return;
+            int pivot = array[(left + right) / 2];
+            int index = partition(array, left, right, pivot);
+            quickSort(array, left, index - 1);
+            quickSort(array, index, right);
+        }
+        #endregion
     }
 }
+
