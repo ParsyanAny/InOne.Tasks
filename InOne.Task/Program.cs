@@ -160,9 +160,12 @@ namespace InOne.Task
 
             int[] arr = Tester.GetRandomArray(10);
             arr.ForeachWrite();
-            Sort<int>.QuickSort(arr);
-            //Sort<int>.BuckedSort(arr);
+            Sort<int>.MarginSort(arr);
             arr.ForeachWrite();
+            //Sort<int>.QuickSort(arr);
+            //Sort<int>.BuckedSort(arr);
+            //arr.ForeachWrite();
+
             //int[] arr = { 1, 2, 3, 4, 5 };
             //Sort<int>.BubbleSort(arr);
             //QuickCode.WriteForeach(arr);
@@ -221,6 +224,7 @@ namespace InOne.Task
             //bst.Add(3);
             //bst.Add(5);
             //bst.Add(1);
+            //bst.InOrderPrint();
 
             //bst.InOrderPrint();
             //bst.ForeachWrite();
@@ -241,8 +245,20 @@ namespace InOne.Task
 
             #region Complete Tree
 
-            //CompleteTree<int> tr = new CompleteTree<int>(10);
+            // CompleteTree<int> tr = new CompleteTree<int> (10) { 2, 6, 5, 1, 2, 3, 54, 8, 5, 2 };
+            
+            //int[] arr = {2,6,5,1,2,3,54,8,5,2 };
+            //CompleteTree<int> ct = new CompleteTree<int>(arr);
 
+            //foreach (var item in ct)
+            //{
+            //    item.WriteItem();
+            //}
+            //ct.Sort();
+            //foreach (var item in ct)
+            //{
+            //    item.WriteItem();
+            //}
             //tr.Add(5);
             //tr.Add(7);
             //tr.Add(1);

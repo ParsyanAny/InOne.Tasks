@@ -18,7 +18,12 @@ namespace InOne.Task.Structure.IMPL
         }
         public CompleteTree(T[] arr)
         {
-            
+            array = arr;
+            int count = array.Length-1;
+            while (count != 0)
+            {
+                HeapifyUp(count--);
+            }
         }
         #region Base Functionality
         public void Add(T data)
@@ -58,19 +63,12 @@ namespace InOne.Task.Structure.IMPL
         }
         public void Sort()
         {
-            int index = 0;
-            for (int i = index + 1; i <= index * 2; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                for (int y = index; y <= index * 2; y++)
-                {
-                    if (y >= array.Length)
-                        break;
-                    if (array[y].CompareTo(array[y + 1]) == 1)
-                        swap(array, y, y + 1);
-                }
-                if (index == 0)
-                    index++;
-                index = index * 2;
+                T removeEl = GetMin();
+                RemoveMin();
+                array[lastIndex] = removeEl;
+                
             }
         }
         #endregion

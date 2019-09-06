@@ -42,20 +42,20 @@ namespace InOne.Task.Algorithms
                 return BinarySearch(list, num, maxIndex, minIndex = mid + 1);
             }
         }
-        //public static void TowerOfHanoi(ArrayStack<int> tower1, ArrayStack<int> tower2, ArrayStack<int> tower3, int count)
-        //{
-        //    if (count == 1)
-        //    {
-        //        tower3.Push(tower1.Pop());
-        //        return;
-        //    }
+        public static void TowerOfHanoi(ArrayStack<int> tower1, ArrayStack<int> tower2, ArrayStack<int> tower3, int count)
+        {
+            if (count == 1)
+            {
+                tower3.Push(tower1.Pop());
+                return;
+            }
 
-        //    TowerOfHanoi(tower1, tower2, tower3, count - 1);
+            TowerOfHanoi(tower1, tower2, tower3, count - 1);
 
-        //    tower3.Push(tower1.Pop());
+            tower3.Push(tower1.Pop());
 
-        //    TowerOfHanoi(tower1, tower2, tower3, count - 1);
-        //}
+            TowerOfHanoi(tower1, tower2, tower3, count - 1);
+        }
     }
 }
 

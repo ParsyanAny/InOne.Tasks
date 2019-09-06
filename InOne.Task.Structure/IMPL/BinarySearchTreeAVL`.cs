@@ -85,15 +85,12 @@ namespace InOne.Task.Structure.IMPL
             parent.Parent = parpar?.Parent;
             parent.Left = parpar;
             parpar.Right = null;
-            //parent.Left.Height = parent.Height - 1;
-            //parent.Right.Height = parent.Height - 1;
             if (parpar.Parent == null)
                 _root = parent;
             else
                 parpar.Parent.Right = parent;
-            updatePost(parent.Parent);
-            //update(parent.Right); // ???
-            //update(parent.Left);  // ???
+            parent.Left.Height = parent.Height - 1;
+            //parent.Right.Height = parent.Height - 1;
             return parent;
 
         }
@@ -124,16 +121,6 @@ namespace InOne.Task.Structure.IMPL
             Node current = parent.Right;
             parent.Right = rotateLL(current);
             return rotateRR(parent);
-        }
-        private void updatePost(Node current)
-        {
-            if (current == null)
-                return;
-            current.Height--;
-            if (current.Left != null)
-                updatePost(current.Left);
-            else 
-                updatePost(current.Right);
         }
         #endregion
     }

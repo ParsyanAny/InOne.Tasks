@@ -52,11 +52,8 @@ namespace InOne.Task.Algorithms
                 swap(arr, i, smallestIndex);
             }
         }
-        public static void QuickSort(int[] arr)=> quickSort(arr, 0, arr.Length - 1);
-        public static void MarginSort(T[] arr)
-        {
-
-        }
+        public static void QuickSort(T[] arr)=> quickSort(arr, 0, arr.Length - 1);
+        public static void MarginSort(T[] arr) => mergeSort(arr, 0, arr.Length-1);
         public static void HeapSort(T[] arr)
         {
 
@@ -100,15 +97,15 @@ namespace InOne.Task.Algorithms
             array[firstIndex] = array[secondIndex];
             array[secondIndex] = temp;
         }
-        private static int partition(int[] array, int left, int right, int pivot)
+        private static int partition(T[] array, int left, int right, T pivot)
         {
             while (left <= right)
             {
-                while (array[left] < pivot)
+                while (array[left].CompareTo(pivot) == - 1)
                 {
                     left++;
                 }
-                while (array[right] > pivot)
+                while (array[right].CompareTo(pivot) == 1)
                 {
                     right--;
                 }
@@ -121,14 +118,46 @@ namespace InOne.Task.Algorithms
             }
             return left;
         }
-        private static void quickSort(int[] array, int left, int right)
+        private static void quickSort(T[] array, int left, int right)
         {
             if (left >= right)
                 return;
-            int pivot = array[(left + right) / 2];
+            T pivot = array[(left + right) / 2];
             int index = partition(array, left, right, pivot);
             quickSort(array, left, index - 1);
             quickSort(array, index, right);
+        }
+        private static void merge(T[] arr, int left, int middle, int right)
+        {
+            T[] leftArray = new T[middle - left + 1];
+            T[] rightArray = new T[right - middle];
+
+            Array.Copy(arr, left, leftArray, 0, middle - left + 1);
+            Array.Copy(arr, middle + 1, rightArray, 0, right - middle);
+
+            int i = 0;
+            int j = 0;
+            for (int k = left; k < right + 1; k++)
+            {
+                if (i == leftArray.Length)
+                    arr[k] = rightArray[j++];
+                else if (j == rightArray.Length)
+                    arr[k] = leftArray[i++];
+                else if (leftArray[i].CompareTo(rightArray[j]) < 1)
+                    arr[k] = leftArray[i++];
+                else
+                    arr[k] = rightArray[j++];
+            }
+        }
+        private static void mergeSort(T[] input, int left, int right)
+        {
+            if (left < right)
+            {
+                int middle = (left + right) / 2;
+                mergeSort(input, left, middle);
+                mergeSort(input, middle + 1, right);
+                merge(input, left, middle, right);
+            }
         }
         #endregion
     }
