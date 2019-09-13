@@ -14,9 +14,9 @@ namespace InOne.Task.FootBallAndADO.ModelRepositories
         {
             return new Team
             {
-                Id = (int)reader["Id"],
-                Name = (string)reader["Name"],
-                Coach_Id = (int)reader["Coach_Id"]
+                Id = (int)reader[nameof(Team.Id)],
+                Name = (string)reader[nameof(Team.Name)],
+                Coach_Id = (int)reader[nameof(Team.Coach_Id)]
             };
         }
     }

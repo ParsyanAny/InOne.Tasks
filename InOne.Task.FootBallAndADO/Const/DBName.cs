@@ -11,6 +11,8 @@ namespace InOne.Task.FootBallAndADO.Const
         public const string Table_Teams = "teams";
         public const string Table_Players = "players";
         public const string Table_Coachs = "coachs";
+        public const string Table_BrandNames = "brandnames";
+        public const string Table_Shoes = "shoes";
 
         public const string Col_Id = "Id";
     }

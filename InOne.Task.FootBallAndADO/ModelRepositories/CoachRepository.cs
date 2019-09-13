@@ -15,9 +15,9 @@ namespace InOne.Task.FootBallAndADO.ModelRepositories
         {
             return new Coach
             {
-                Id = (int)reader["Id"],
-                FullName = (string)reader["FullName"],
-                Age = Convert.ToString(reader["Age"])
+                Id = (int)reader[nameof(Coach.Id)],
+                FullName = (string)reader[nameof(Coach.FullName)],
+                Age = Convert.ToString(reader[nameof(Coach.Age)])
             };
         }
     }

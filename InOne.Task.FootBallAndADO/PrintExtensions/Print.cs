@@ -1,9 +1,6 @@
 ﻿using InOne.Task.FootBallAndADO.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InOne.Task.FootBallAndADO.PrintExtensions
 {
@@ -23,11 +20,11 @@ namespace InOne.Task.FootBallAndADO.PrintExtensions
         public static void PrintPlayer(this IEnumerable<Player> p)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("PlayerID  TeamID   Name\tSurname  Number\t\n");
+            Console.WriteLine("PlayerID  TeamID   Name\tSurname  Number\t FootSize\n");
             Console.ForegroundColor = ConsoleColor.Cyan;
             foreach (var item in p)
             {
-                Console.WriteLine($"{item.Id}\t   {item.Team_Id} \t   {item.Name} {item.SurName} ({item.Number})");
+                Console.WriteLine($"{item.Id}\t   {item.Team_Id} \t   {item.Name} {item.SurName}({item.Number})\t  {item.FootSize}");
             }
             Console.ResetColor();
         }
@@ -39,6 +36,28 @@ namespace InOne.Task.FootBallAndADO.PrintExtensions
             foreach (var item in c)
             {
                 Console.WriteLine($"{item.Id} \t{item.FullName}   {item?.Age}");
+            }
+            Console.ResetColor();
+        }
+        public static void PrintBrandNames(this IEnumerable<BrandName> bn)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("BrandNameID  Name\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            foreach (var item in bn)
+            {
+                Console.WriteLine($"{item.Id}  \t     {item.Name}");
+            }
+            Console.ResetColor();
+        }
+        public static void PrintShoes(this IEnumerable<Shoes> sh)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("ShoesID  BrandNameId  Player_Id  Price  Size  DateOfCreation\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            foreach (var item in sh)
+            {
+                Console.WriteLine($"{item.Id}  \t {item.BrandName_Id}\t      {item.Player_Id}\t\t {item.Price}\t{item.Size}    {item.DateOfCreation}");
             }
             Console.ResetColor();
         }

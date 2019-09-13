@@ -14,11 +14,12 @@ namespace InOne.Task.FootBallAndADO.ModelRepositories
         {
             return new Player
             {
-                Id = (int)reader["Id"],
-                Name = (string)reader["Name"],
-                SurName = (string)reader["SurName"],
-                Team_Id = (int)reader["Team_Id"],
-                Number = (byte)reader["Number"],
+                Id = (int)reader[nameof(Player.Id)],
+                Name = (string)reader[nameof(Player.Name)],
+                SurName = (string)reader[nameof(Player.SurName)],
+                Team_Id = (int)reader[nameof(Player.Team_Id)],
+                FootSize = (int)reader[nameof(Player.FootSize)],
+                Number = (byte)reader[nameof(Player.Number)],
             };
         }
     }

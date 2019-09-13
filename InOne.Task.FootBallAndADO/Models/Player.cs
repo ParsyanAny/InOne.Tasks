@@ -7,5 +7,6 @@
         public string SurName { get; set; }
         public int Number { get; set; }
         public int Team_Id { get; set; }
+        public int FootSize { get; set; }
     }
 }

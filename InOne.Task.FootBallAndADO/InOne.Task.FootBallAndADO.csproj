@@ -49,11 +49,15 @@
     <Compile Include="Const\DBName.cs" />
     <Compile Include="DbContext.cs" />
     <Compile Include="IBaseFunctionality.cs" />
+    <Compile Include="ModelRepositories\BrandNamesRepository.cs" />
     <Compile Include="ModelRepositories\CoachRepository.cs" />
     <Compile Include="ModelRepositories\PlayerRepository.cs" />
+    <Compile Include="ModelRepositories\ShoesRepository.cs" />
     <Compile Include="ModelRepositories\TeamRepository.cs" />
+    <Compile Include="Models\BrandName.cs" />
     <Compile Include="Models\Coach.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Shoes.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="PrintExtensions\Print.cs" />
     <Compile Include="Program.cs" />

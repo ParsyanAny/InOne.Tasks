@@ -13,8 +13,8 @@ namespace InOne.Task.FootBallAndADO
     {
         static void Main(string[] args)
         {
-            //string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            //var dbContext = new DbContext(conStr);
+            string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+            var dbContext = new DbContext(conStr);
 
             #region Teams Test
             //TeamRepository teamRepo = new TeamRepository(dbContext);
@@ -38,7 +38,20 @@ namespace InOne.Task.FootBallAndADO
             ////coachRepo.Delete(11);
             //coachs.PrintCoach();
             #endregion
-            //Console.ReadLine();
+
+            #region BrandNames Test
+            //BrandNamesRepository brandname = new BrandNamesRepository(dbContext);
+            //IEnumerable<BrandName> brandnames = brandname.SelectAll();
+            //brandnames.PrintBrandNames();
+            #endregion
+
+            #region Shoes Test
+            //ShoesRepository shoes = new ShoesRepository(dbContext);
+            //IEnumerable<Shoes> shoesE = shoes.SelectAll();
+            //shoesE.PrintShoes();
+            #endregion
+
+            Console.ReadLine();
         }
     }
 }
