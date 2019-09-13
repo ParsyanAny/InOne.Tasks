@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InOne.Task.Structure", "InO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InOne.Task.Algorithms", "InOne.Task.Algorithms\InOne.Task.Algorithms.csproj", "{0ED5A0D1-B3C7-44A7-8D72-B8FD51661E70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.Shapes", "InOne.Task.Shapes\InOne.Task.Shapes.csproj", "{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InOne.Task.Shapes", "InOne.Task.Shapes\InOne.Task.Shapes.csproj", "{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.FootBallAndADO", "InOne.Task.FootBallAndADO\InOne.Task.FootBallAndADO.csproj", "{1216350F-D5D7-450B-82CF-F0B2B9467CF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AA3C97C-D4B6-41C7-AC0E-A3DF24E03341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1216350F-D5D7-450B-82CF-F0B2B9467CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1216350F-D5D7-450B-82CF-F0B2B9467CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1216350F-D5D7-450B-82CF-F0B2B9467CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1216350F-D5D7-450B-82CF-F0B2B9467CF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
