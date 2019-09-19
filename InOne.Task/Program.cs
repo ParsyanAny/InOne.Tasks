@@ -4,6 +4,7 @@ using InOne.Task.Shapes;
 using System;
 using System.Collections.Generic;
 using InOne.Task.Structure;
+using InOne.Task.Additions;
 
 namespace InOne.Task
 {
@@ -158,10 +159,10 @@ namespace InOne.Task
 
             #region Sorting
 
-            int[] arr = Tester.GetRandomArray(10);
-            arr.ForeachWrite();
-            Sort<int>.MarginSort(arr);
-            arr.ForeachWrite();
+            //int[] arr = Tester.GetRandomArray(10);
+            //arr.ForeachWrite();
+            //Sort<int>.MarginSort(arr);
+            //arr.ForeachWrite();
             //Sort<int>.QuickSort(arr);
             //Sort<int>.BuckedSort(arr);
             //arr.ForeachWrite();
@@ -246,7 +247,7 @@ namespace InOne.Task
             #region Complete Tree
 
             // CompleteTree<int> tr = new CompleteTree<int> (10) { 2, 6, 5, 1, 2, 3, 54, 8, 5, 2 };
-            
+
             //int[] arr = {2,6,5,1,2,3,54,8,5,2 };
             //CompleteTree<int> ct = new CompleteTree<int>(arr);
 
@@ -285,6 +286,16 @@ namespace InOne.Task
             //Console.WriteLine($"\nThis is your min {tr.GetMin()}");
             #endregion
 
+
+            #region HashTable
+            HashTable persons = new HashTable(5);
+            persons.Add(new Person {Name = "A", SurName = "B", BirthDay = DateTime.Now});
+
+            foreach (var item in persons)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            #endregion
             Console.ReadLine();
         }
     }

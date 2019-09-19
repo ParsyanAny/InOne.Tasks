@@ -1,0 +1,62 @@
+﻿namespace InOne.Task.RoomReserveDB.Enums
+{
+    public class Enums
+    {
+        public enum Names
+        {
+            Alexa,
+            Alina,
+            Armen,
+            Arman,
+            Antonio,
+            Johan,
+            Gayane,
+            Gohar,
+            Gandi,
+            Daniele,
+            David,
+            Helene,
+            Draco,
+            Elena,
+            Eduard,
+            Edmund,
+            Jozef,
+            Jasmin,
+            Zelda,
+            Izabelle,
+            Markus,
+            Ruben,
+            Robert,
+            Malina,
+            Sara,
+            Luiza,
+            Kelly,
+            Melly,
+            Markos,
+            Kronos,
+            Adios
+        }
+        public enum Surnames
+        {
+            Balkanyan,
+            Afrikyan,
+            Terteryan,
+            Margaryan,
+            Lennon,
+            Mathers,
+            Vardanyan,
+            Barbaryan,
+            Babajanyan,
+            Baghramyan,
+            Parsyan,
+            Orbelyan,
+            Qaranjyan,
+            Orbakyan,
+            Mrmryan,
+            Malfoy,
+            Sarsuryan,
+            Hrabuxyan,
+            Mahacyan
+        }
+    }
+}

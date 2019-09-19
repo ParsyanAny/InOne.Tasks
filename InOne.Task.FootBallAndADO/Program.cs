@@ -17,9 +17,9 @@ namespace InOne.Task.FootBallAndADO
             var dbContext = new DbContext(conStr);
 
             #region Teams Test
-            //TeamRepository teamRepo = new TeamRepository(dbContext);
-            //IEnumerable<Team> teams = teamRepo.SelectAll();
-            //teams.PrintTeam();
+            TeamRepository teamRepo = new TeamRepository(dbContext);
+            IEnumerable<Team> teams = teamRepo.SelectAll();
+            teams.PrintTeam();
             #endregion
 
             #region Players Test

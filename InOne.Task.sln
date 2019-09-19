@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InOne.Task.Shapes", "InOne.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.FootBallAndADO", "InOne.Task.FootBallAndADO\InOne.Task.FootBallAndADO.csproj", "{1216350F-D5D7-450B-82CF-F0B2B9467CF9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InOne.Task.Additions", "InOne.Task.Additions\InOne.Task.Additions.csproj", "{F8D7C33A-0E4A-41C7-B384-AC0B27405359}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InOne.Task.RoomReserveDB", "InOne.Task.RoomReserveDB\InOne.Task.RoomReserveDB.csproj", "{D9200FE2-AD9A-4C8C-89E5-03785AB2EF6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{1216350F-D5D7-450B-82CF-F0B2B9467CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1216350F-D5D7-450B-82CF-F0B2B9467CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1216350F-D5D7-450B-82CF-F0B2B9467CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D7C33A-0E4A-41C7-B384-AC0B27405359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D7C33A-0E4A-41C7-B384-AC0B27405359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D7C33A-0E4A-41C7-B384-AC0B27405359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D7C33A-0E4A-41C7-B384-AC0B27405359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9200FE2-AD9A-4C8C-89E5-03785AB2EF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9200FE2-AD9A-4C8C-89E5-03785AB2EF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9200FE2-AD9A-4C8C-89E5-03785AB2EF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9200FE2-AD9A-4C8C-89E5-03785AB2EF6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
