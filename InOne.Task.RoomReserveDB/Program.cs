@@ -19,14 +19,16 @@ namespace InOne.Task.RoomReserveDB
             var context = new ApplicationContext();
             IUnitOfWork unit = new UnitOfWork(context);
 
-
             #region Users Test
+            //context.DeleteAllUsers();
+            //context.AddRandomUsers(25);
+            //context.SaveChanges();
             //context.AddRandomUsers(50);
             //context.Users.ToArray().PrintUsers();
             #endregion
 
             #region  Furniture Test
-            // context.Furnitures.ToArray().PrintFurnitures();
+            //context.Furnitures.ToArray().PrintFurnitures();
             #endregion
 
             #region Reservation Time Test
@@ -46,6 +48,20 @@ namespace InOne.Task.RoomReserveDB
             //context.AddRandomReservations(10);
             //context.SaveChanges();
             //context.Reservations.ToArray().PrintReservations();
+            #endregion
+
+            #region RoomFurniture Test
+            //context.AddRandomRoomFurnitures(5);
+            //context.SaveChanges();
+            //context.RoomFurnitures.ToArray().PrintRoomFurnitures();
+            #endregion
+
+            #region ReservationFurniture Test
+
+            //context.AddRandomReservationFurnitures(1);
+            //context.SaveChanges();
+            //context.ReservationFurnitures.ToArray().PrintReservationFurnitures();
+
             #endregion
 
             Console.Read();

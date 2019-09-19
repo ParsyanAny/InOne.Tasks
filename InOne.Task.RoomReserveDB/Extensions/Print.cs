@@ -61,5 +61,27 @@ namespace InOne.Task.RoomReserveDB.Extensions
             }
             Console.ResetColor();
         }
+        public static void PrintReservationFurnitures(this IEnumerable<ReservationFurniture> resfurs)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("FurnitureID ReservationID FurnitureCount");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            foreach (var item in resfurs)
+            {
+                Console.WriteLine($"{item.FurnitureId}\t    {item.ReservationId}\t\t  {item.Count}");
+            }
+            Console.ResetColor();
+        }
+        public static void PrintRoomFurnitures(this IEnumerable<RoomFurniture> roomfurs)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("ID\tReservationID   FurnitureID    Count");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            foreach (var item in roomfurs)
+            {
+                Console.WriteLine($"{item.Id}\t{item.ReservationId}\t\t{item.FurnitureId}\t\t{item.Count}");
+            }
+            Console.ResetColor();
+        }
     }
 }
